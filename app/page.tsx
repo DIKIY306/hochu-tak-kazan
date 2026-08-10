@@ -19,6 +19,12 @@ const addresses = [
   "Песчаные Ковали, Октябрьская, 29в",
 ];
 
+const faqs = [
+  ["Как записаться?", "Оставьте телефон, администратор подберет филиал и свободное окно."],
+  ["Цена будет известна заранее?", "Да, мастер проговаривает стоимость до начала услуги."],
+  ["Можно показать фото?", "Да, покажите референс, а мастер объяснит, как повторить образ."],
+];
+
 const gallery = [
   ["/media/hero-before-after.jpg", "Окрашивание и укладка"],
   ["/media/work-blonde.jpg", "Блонд"],
@@ -42,11 +48,8 @@ export default function Home() {
     <main className="site-shell">
       <header className="topbar" aria-label="Главная навигация">
         <a className="brand" href="#top" aria-label="Хочу Так">
-          <img src="/media/logo.jpg" alt="" />
-          <span>
-            <strong>Хочу Так</strong>
-            <small>сеть салонов красоты</small>
-          </span>
+          <strong>Хочу Так</strong>
+          <small>сеть салонов красоты</small>
         </a>
         <nav className="nav-links" aria-label="Разделы сайта">
           <a href="#services">Услуги</a>
@@ -54,15 +57,21 @@ export default function Home() {
           <a href="#salons">Салоны</a>
           <a href="#booking">Запись</a>
         </nav>
+        <div className="header-socials" aria-label="Социальные сети">
+          <a href="https://vk.com/hochutak_kzn">ВК</a>
+          <a href="https://www.instagram.com/hochutak_kzn">Instagram</a>
+          <a href="https://t.me/Salon_Hochu_Tak">Telegram</a>
+        </div>
         <a className="topbar-cta" href="#booking">Хочу так</a>
       </header>
 
       <section className="hero" id="top">
         <div className="hero-main">
-          <div className="hero-logo-card" aria-hidden="true">
-            <img src="/media/logo.jpg" alt="" />
+          <div className="hero-kicker">
+            <span>Казань</span>
+            <span>7 салонов</span>
+            <span>запись в 2 клика</span>
           </div>
-          <p className="eyebrow">Казань · 7 салонов · запись в 2 клика</p>
           <h1>Не объясняй. Просто скажи: «Хочу так».</h1>
           <div className="hero-bottom">
             <p>
@@ -99,11 +108,18 @@ export default function Home() {
       </section>
 
       <section className="ticker" aria-label="Короткие преимущества">
-        <span>Никаких очередей</span>
-        <span>Только время для себя</span>
-        <span>Цена заранее</span>
-        <span>Мужская мойка бесплатно</span>
-        <span>Гарантия качества</span>
+        <div className="ticker-track">
+          <span>Никаких очередей</span>
+          <span>Только время для себя</span>
+          <span>Цена заранее</span>
+          <span>Мужская мойка бесплатно</span>
+          <span>Гарантия качества</span>
+          <span>Никаких очередей</span>
+          <span>Только время для себя</span>
+          <span>Цена заранее</span>
+          <span>Мужская мойка бесплатно</span>
+          <span>Гарантия качества</span>
+        </div>
       </section>
 
       <section className="stats-strip" aria-label="Факты о сети">
@@ -116,9 +132,16 @@ export default function Home() {
       </section>
 
       <section className="services-section" id="services">
-        <div className="section-heading dense-heading">
+        <div className="section-heading spread-heading services-heading">
           <p className="eyebrow">Меню услуг</p>
-          <h2>Быстро выбрать. Легко записаться. Прийти рядом.</h2>
+          <div className="spread-words" aria-label="Быстро выбрать. Легко записаться. Прийти рядом.">
+            <span>Быстро</span>
+            <span>выбрать</span>
+            <span>Легко</span>
+            <span>записаться</span>
+            <span>Прийти</span>
+            <span>рядом</span>
+          </div>
         </div>
         <div className="services-board">
           {services.map(([title, text], index) => (
@@ -142,24 +165,39 @@ export default function Home() {
       </section>
 
       <section className="works-section" id="works">
-        <div className="section-heading">
+        <div className="section-heading spread-heading works-heading">
           <p className="eyebrow">Работы</p>
-          <h2>Результаты, которые хочется сохранить в галерею.</h2>
+          <div className="spread-words works-words" aria-label="Результаты, которые хочется сохранить в галерею.">
+            <span>Результаты</span>
+            <span>которые</span>
+            <span>хочется</span>
+            <span>сохранить</span>
+            <span>в галерею</span>
+          </div>
         </div>
         <div className="gallery-grid">
           {gallery.map(([src, title], index) => (
-            <figure className={index === 0 || index === 4 ? "gallery-tile large" : "gallery-tile"} key={`${src}-${index}`}>
+            <figure className={index === 0 ? "gallery-tile large" : "gallery-tile"} key={`${src}-${index}`}>
               <img src={src} alt={title} />
               <figcaption>{title}</figcaption>
             </figure>
           ))}
+          <article className="gallery-note">
+            <strong>До / после</strong>
+            <span>В шаблоне можно повторять фото, позже заменим на обработанные работы.</span>
+          </article>
         </div>
       </section>
 
       <section className="benefit-section">
         <div className="benefit-copy">
           <p className="eyebrow">Почему Хочу Так</p>
-          <h2>Понятно до услуги. Красиво после.</h2>
+          <h2>
+            <span>Понятно</span>
+            <span>до услуги.</span>
+            <span>Красиво</span>
+            <span>после.</span>
+          </h2>
         </div>
         <div className="benefit-grid">
           <article>
@@ -182,9 +220,14 @@ export default function Home() {
       </section>
 
       <section className="salons-section" id="salons">
-        <div className="section-heading">
+        <div className="section-heading spread-heading salons-heading">
           <p className="eyebrow">Адреса</p>
-          <h2>Выберите ближайший салон.</h2>
+          <div className="spread-words salons-words" aria-label="Выберите ближайший салон.">
+            <span>Выберите</span>
+            <span>ближайший</span>
+            <span>салон</span>
+            <span>в Казани</span>
+          </div>
         </div>
         <div className="salons-grid">
           {addresses.map((address, index) => (
@@ -233,14 +276,32 @@ export default function Home() {
       </section>
 
       <footer className="footer">
-        <a className="footer-brand" href="#top">
-          <img src="/media/logo.jpg" alt="" />
-          <span>Хочу Так</span>
-        </a>
-        <div className="footer-links">
-          <a href="https://vk.com/hochutak_kzn">ВК</a>
-          <a href="https://www.instagram.com/hochutak_kzn">Instagram</a>
-          <a href="https://t.me/Salon_Hochu_Tak">Telegram</a>
+        <div className="footer-title">
+          <strong>Хочу Так</strong>
+          <span>Сеть салонов красоты в Казани</span>
+        </div>
+        <div className="footer-grid">
+          <section>
+            <h2>FAQ</h2>
+            {faqs.map(([question, answer]) => (
+              <details key={question}>
+                <summary>{question}</summary>
+                <p>{answer}</p>
+              </details>
+            ))}
+          </section>
+          <section>
+            <h2>Документы</h2>
+            <a href="#booking">Политика обработки данных</a>
+            <a href="#booking">Согласие на обработку персональных данных</a>
+            <a href="#booking">Подарочные сертификаты</a>
+          </section>
+          <section>
+            <h2>Контакты</h2>
+            <a href="#salons">7 салонов в Казани</a>
+            <a href="#booking">Записаться</a>
+            <a href="https://t.me/Salon_Hochu_Tak">Telegram администратора</a>
+          </section>
         </div>
       </footer>
     </main>
