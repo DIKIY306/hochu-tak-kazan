@@ -34,9 +34,10 @@ test("server-renders the Hochu Tak design draft", async () => {
   assert.match(html, /<title>Хочу Так - сеть салонов красоты в Казани<\/title>/i);
   assert.match(html, /Не объясняй\. Просто скажи/);
   assert.match(html, /7 салонов/);
-  assert.match(html, /70 тыс\.\+/);
+  assert.match(html, /70K\+/);
   assert.match(html, /Белинского, 18/);
   assert.match(html, /Записаться/);
+  assert.match(html, /\/media\/logo\.jpg/);
   assert.doesNotMatch(html, /Your site is taking shape|codex-preview/i);
 
   await assert.rejects(access(new URL("app/_sites-preview", templateRoot)));

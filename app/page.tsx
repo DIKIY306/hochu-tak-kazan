@@ -1,47 +1,12 @@
 const services = [
-  {
-    title: "Стрижки",
-    text: "Женские, мужские и детские стрижки с понятной ценой до начала работы.",
-    accent: "До 40 минут",
-  },
-  {
-    title: "Окрашивание",
-    text: "Подбор оттенка, сложные техники, восстановление качества волос после процедуры.",
-    accent: "Цена заранее",
-  },
-  {
-    title: "Уходы",
-    text: "Процедуры для блеска, плотности и мягкости волос после консультации мастера.",
-    accent: "Под задачу",
-  },
-  {
-    title: "Укладки и прически",
-    text: "Быстрый образ на день, вечер, праздник, выпускной или важную встречу.",
-    accent: "Хочу так",
-  },
-];
-
-const works = [
-  {
-    src: "/media/hero-before-after.jpg",
-    title: "Окрашивание и укладка",
-    text: "Мягкий переход оттенка и аккуратная форма без ощущения перегруза.",
-  },
-  {
-    src: "/media/work-blonde.jpg",
-    title: "Сложный блонд",
-    text: "Чистый тон, визуальная плотность и салонный блеск после окрашивания.",
-  },
-  {
-    src: "/media/work-braid.jpg",
-    title: "Прическа на событие",
-    text: "Собранный образ с деталями, который держится и выглядит естественно.",
-  },
-  {
-    src: "/media/work-kids.jpg",
-    title: "Детская стрижка",
-    text: "Быстро, спокойно и без лишнего ожидания для родителей и ребенка.",
-  },
+  ["Женские стрижки", "форма, укладка, консультация"],
+  ["Мужские стрижки", "мойка бесплатно"],
+  ["Детские стрижки", "от 3 лет"],
+  ["Окрашивание", "тон, сложные техники, блонд"],
+  ["Уходы", "блеск, плотность, восстановление"],
+  ["Завивка", "текстура и долговременная форма"],
+  ["Укладки", "день, вечер, событие"],
+  ["Прически", "выпускной, свадьба, праздник"],
 ];
 
 const addresses = [
@@ -54,11 +19,22 @@ const addresses = [
   "Песчаные Ковали, Октябрьская, 29в",
 ];
 
-const proof = [
-  ["7", "салонов в разных районах Казани"],
-  ["70 тыс.+", "клиентов доверили нам свои волосы"],
-  ["6 лет", "работаем как сеть салонов красоты"],
-  ["2 клика", "до записи в удобный филиал"],
+const gallery = [
+  ["/media/hero-before-after.jpg", "Окрашивание и укладка"],
+  ["/media/work-blonde.jpg", "Блонд"],
+  ["/media/work-braid.jpg", "Плетение"],
+  ["/media/style-dark-updo.jpg", "Вечерняя прическа"],
+  ["/media/style-tiara.jpg", "Праздничный образ"],
+  ["/media/work-kids.jpg", "Детская стрижка"],
+  ["/media/work-evening.jpg", "Собранная укладка"],
+  ["/media/work-blonde.jpg", "Сложное окрашивание"],
+];
+
+const stats = [
+  ["7", "салонов"],
+  ["70K+", "клиентов"],
+  ["6 лет", "в Казани"],
+  ["40 мин", "на стрижку"],
 ];
 
 export default function Home() {
@@ -66,7 +42,7 @@ export default function Home() {
     <main className="site-shell">
       <header className="topbar" aria-label="Главная навигация">
         <a className="brand" href="#top" aria-label="Хочу Так">
-          <span className="brand-mark">ХТ</span>
+          <img src="/media/logo.jpg" alt="" />
           <span>
             <strong>Хочу Так</strong>
             <small>сеть салонов красоты</small>
@@ -75,183 +51,165 @@ export default function Home() {
         <nav className="nav-links" aria-label="Разделы сайта">
           <a href="#services">Услуги</a>
           <a href="#works">Работы</a>
-          <a href="#addresses">Адреса</a>
+          <a href="#salons">Салоны</a>
           <a href="#booking">Запись</a>
         </nav>
-        <a className="topbar-cta" href="#booking">Записаться</a>
+        <a className="topbar-cta" href="#booking">Хочу так</a>
       </header>
 
       <section className="hero" id="top">
-        <div className="hero-copy">
-          <p className="eyebrow">Казань · 7 салонов рядом с домом и работой</p>
-          <h1>Не объясняй. Просто скажи: «Хочу так».</h1>
-          <p className="hero-lead">
-            Стрижки, окрашивания, уходы и прически в салонах, где цену называют
-            заранее, мастера подбирают услугу под запрос, а запись занимает пару
-            минут.
-          </p>
-          <div className="hero-actions" aria-label="Основные действия">
-            <a className="primary-button" href="#booking">Выбрать салон</a>
-            <a className="secondary-button" href="#works">Смотреть работы</a>
+        <div className="hero-main">
+          <div className="hero-logo-card" aria-hidden="true">
+            <img src="/media/logo.jpg" alt="" />
           </div>
-          <div className="hero-benefits" aria-label="Преимущества">
-            <span>Никаких очередей</span>
-            <span>Мужская мойка бесплатно</span>
-            <span>Гарантия качества</span>
+          <p className="eyebrow">Казань · 7 салонов · запись в 2 клика</p>
+          <h1>Не объясняй. Просто скажи: «Хочу так».</h1>
+          <div className="hero-bottom">
+            <p>
+              Стрижки, окрашивания, уходы и прически в сети салонов, где мастер
+              понимает запрос, цена известна заранее, а ближайший филиал уже рядом.
+            </p>
+            <div className="hero-actions">
+              <a className="primary-button" href="#booking">Записаться</a>
+              <a className="ghost-button" href="#works">Смотреть работы</a>
+            </div>
           </div>
         </div>
 
-        <div className="hero-visual" aria-label="Пример работы салона">
-          <img
-            src="/media/hero-before-after.jpg"
-            alt="Окрашивание и укладка в салоне Хочу Так"
-          />
-          <div className="hero-card">
-            <strong>Хочу вот так, получится?</strong>
-            <span>Мастер подскажет технику, стоимость и свободное время.</span>
-          </div>
+        <div className="hero-media-grid" aria-label="Работы салона">
+          <figure className="media-tile media-tall">
+            <img src="/media/hero-before-after.jpg" alt="Окрашивание волос" />
+            <figcaption>Окрашивание · укладка</figcaption>
+          </figure>
+          <figure className="media-tile">
+            <video autoPlay muted loop playsInline poster="/media/work-blonde.jpg">
+              <source src="/media/salon-motion-1.mp4" type="video/mp4" />
+            </video>
+            <figcaption>Живой формат</figcaption>
+          </figure>
+          <figure className="media-tile">
+            <img src="/media/style-tiara.jpg" alt="Праздничная прическа" />
+            <figcaption>События</figcaption>
+          </figure>
+          <figure className="media-tile media-wide">
+            <img src="/media/work-blonde.jpg" alt="Сложное окрашивание" />
+            <figcaption>Блонд · тон · блеск</figcaption>
+          </figure>
         </div>
       </section>
 
-      <section className="proof-strip" aria-label="Факты о сети">
-        {proof.map(([number, text]) => (
-          <div className="proof-item" key={text}>
+      <section className="ticker" aria-label="Короткие преимущества">
+        <span>Никаких очередей</span>
+        <span>Только время для себя</span>
+        <span>Цена заранее</span>
+        <span>Мужская мойка бесплатно</span>
+        <span>Гарантия качества</span>
+      </section>
+
+      <section className="stats-strip" aria-label="Факты о сети">
+        {stats.map(([number, text]) => (
+          <div key={text}>
             <strong>{number}</strong>
             <span>{text}</span>
           </div>
         ))}
       </section>
 
-      <section className="section intro-section">
-        <div>
-          <p className="eyebrow">Что продаем на первом экране</p>
-          <h2>Свежий внешний вид без лишней дороги, ожидания и сюрпризов в чеке.</h2>
+      <section className="services-section" id="services">
+        <div className="section-heading dense-heading">
+          <p className="eyebrow">Меню услуг</p>
+          <h2>Быстро выбрать. Легко записаться. Прийти рядом.</h2>
         </div>
-        <p>
-          Сайт должен быстро привести человека к действию: записаться, позвонить
-          или написать. Поэтому главный сценарий строится вокруг выбора ближайшего
-          салона, понятного списка услуг и доверия к реальным работам.
-        </p>
-      </section>
-
-      <section className="section" id="services">
-        <div className="section-heading">
-          <p className="eyebrow">Услуги</p>
-          <h2>Все, что чаще всего ищут перед записью.</h2>
-        </div>
-        <div className="service-grid">
-          {services.map((service) => (
-            <article className="service-card" key={service.title}>
-              <span>{service.accent}</span>
-              <h3>{service.title}</h3>
-              <p>{service.text}</p>
+        <div className="services-board">
+          {services.map(([title, text], index) => (
+            <article className="service-row" key={title}>
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <h3>{title}</h3>
+              <p>{text}</p>
             </article>
           ))}
         </div>
       </section>
 
-      <section className="quote-band">
-        <p>Никаких очередей. Только время для себя.</p>
-        <a href="#booking">Записаться в 2 клика</a>
+      <section className="visual-band" aria-label="Видео салона">
+        <video autoPlay muted loop playsInline poster="/media/work-braid.jpg">
+          <source src="/media/salon-motion-2.mp4" type="video/mp4" />
+        </video>
+        <div className="visual-band-copy">
+          <p>Хочу вот так, получится?</p>
+          <span>Покажите фото. Мастер подберет технику, стоимость и время.</span>
+        </div>
       </section>
 
-      <section className="section" id="works">
+      <section className="works-section" id="works">
         <div className="section-heading">
           <p className="eyebrow">Работы</p>
-          <h2>Реальные фото вместо обещаний.</h2>
+          <h2>Результаты, которые хочется сохранить в галерею.</h2>
         </div>
-        <div className="works-grid">
-          {works.map((work) => (
-            <article className="work-card" key={work.title}>
-              <img src={work.src} alt={work.title} />
-              <div>
-                <h3>{work.title}</h3>
-                <p>{work.text}</p>
-              </div>
-            </article>
+        <div className="gallery-grid">
+          {gallery.map(([src, title], index) => (
+            <figure className={index === 0 || index === 4 ? "gallery-tile large" : "gallery-tile"} key={`${src}-${index}`}>
+              <img src={src} alt={title} />
+              <figcaption>{title}</figcaption>
+            </figure>
           ))}
         </div>
       </section>
 
-      <section className="section split-section">
-        <div>
-          <p className="eyebrow">Почему выбирают</p>
-          <h2>Мастер, который понимает запрос, а не просто делает процедуру.</h2>
-          <p>
-            Перед окрашиванием мастер уточняет важные нюансы, предупреждает о
-            реакции кожи и помогает выбрать безопасный путь к нужному оттенку.
-            Перед стрижкой учитываются особенности головы, привычная укладка и
-            желаемая скорость ухода дома.
-          </p>
+      <section className="benefit-section">
+        <div className="benefit-copy">
+          <p className="eyebrow">Почему Хочу Так</p>
+          <h2>Понятно до услуги. Красиво после.</h2>
         </div>
-        <div className="reason-list">
-          <div>
-            <strong>Цена известна заранее</strong>
-            <span>Клиент понимает стоимость до начала услуги.</span>
-          </div>
-          <div>
-            <strong>Подбор мастера под запрос</strong>
-            <span>Не случайная запись, а выбор специалиста под задачу.</span>
-          </div>
-          <div>
-            <strong>Система лояльности</strong>
-            <span>Бонусы для клиентов сети и актуальные акции.</span>
-          </div>
-          <div>
-            <strong>Гарантия качества</strong>
-            <span>Сделаем как хочет клиент или вернем деньги.</span>
-          </div>
+        <div className="benefit-grid">
+          <article>
+            <strong>Мастер под запрос</strong>
+            <p>Подберем специалиста под стрижку, цвет, уход или прическу.</p>
+          </article>
+          <article>
+            <strong>Стоимость без сюрпризов</strong>
+            <p>До начала услуги понятно, из чего складывается цена.</p>
+          </article>
+          <article>
+            <strong>Рядом с маршрутом</strong>
+            <p>Семь филиалов в разных районах Казани.</p>
+          </article>
+          <article>
+            <strong>Бонусы сети</strong>
+            <p>Акции, сертификаты и лояльность для постоянных клиентов.</p>
+          </article>
         </div>
       </section>
 
-      <section className="section" id="addresses">
+      <section className="salons-section" id="salons">
         <div className="section-heading">
           <p className="eyebrow">Адреса</p>
-          <h2>Салон рядом с домом, работой или привычным маршрутом.</h2>
+          <h2>Выберите ближайший салон.</h2>
         </div>
-        <div className="address-grid">
+        <div className="salons-grid">
           {addresses.map((address, index) => (
-            <article className="address-card" key={address}>
-              <span>Салон {index + 1}</span>
+            <article className="salon-card" key={address}>
+              <span>{String(index + 1).padStart(2, "0")}</span>
               <h3>{address}</h3>
               <p>Казань</p>
+              <a href="#booking">Выбрать</a>
             </article>
           ))}
-        </div>
-      </section>
-
-      <section className="section review-section">
-        <div className="review-copy">
-          <p className="eyebrow">Социальное доказательство</p>
-          <h2>Отзывы и отличные работы должны закрывать главный страх клиента.</h2>
-          <p>
-            Люди переживают, что им испортят волосы или сделают не то, что они
-            хотели. Поэтому в дизайне отдельный акцент сделан на работах, вопросах
-            перед записью, понятной цене и блоке отзывов с карт.
-          </p>
-        </div>
-        <div className="review-stack">
-          <article>
-            <strong>«Хочу вот так, получится?»</strong>
-            <p>Покажите фото, а мастер объяснит, как добиться похожего результата.</p>
-          </article>
-          <article>
-            <strong>«Во сколько есть свободное время?»</strong>
-            <p>Выберите филиал, услугу и удобное окно без звонков по всем адресам.</p>
-          </article>
         </div>
       </section>
 
       <section className="booking-section" id="booking">
-        <div>
+        <div className="booking-copy">
           <p className="eyebrow">Запись</p>
-          <h2>Выберите салон, оставьте телефон, администратор подскажет время.</h2>
-          <p>
-            Напишите, какую услугу хотите, и мы поможем найти ближайшее свободное
-            окно в удобном филиале.
-          </p>
+          <h2>Оставьте контакт. Администратор подберет филиал и свободное время.</h2>
+          <div className="booking-note">
+            <span>Имя</span>
+            <span>Телефон</span>
+            <span>Услуга</span>
+            <span>Салон</span>
+          </div>
         </div>
-        <form className="booking-form" aria-label="Макет формы записи">
+        <form className="booking-form" aria-label="Форма записи">
           <label>
             Имя
             <input type="text" name="name" placeholder="Например, Алина" />
@@ -261,12 +219,12 @@ export default function Home() {
             <input type="tel" name="phone" placeholder="+7 ___ ___-__-__" />
           </label>
           <label>
-            Что хотите сделать
+            Услуга
             <select name="service" defaultValue="">
               <option value="" disabled>Выберите услугу</option>
               <option>Стрижка</option>
               <option>Окрашивание</option>
-              <option>Уходовая процедура</option>
+              <option>Уход</option>
               <option>Укладка или прическа</option>
             </select>
           </label>
@@ -275,10 +233,10 @@ export default function Home() {
       </section>
 
       <footer className="footer">
-        <div>
-          <strong>Хочу Так</strong>
-          <span>Сеть салонов красоты в Казани</span>
-        </div>
+        <a className="footer-brand" href="#top">
+          <img src="/media/logo.jpg" alt="" />
+          <span>Хочу Так</span>
+        </a>
         <div className="footer-links">
           <a href="https://vk.com/hochutak_kzn">ВК</a>
           <a href="https://www.instagram.com/hochutak_kzn">Instagram</a>
