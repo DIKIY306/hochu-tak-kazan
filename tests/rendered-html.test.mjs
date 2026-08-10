@@ -32,13 +32,13 @@ test("server-renders the Hochu Tak design draft", async () => {
 
   const html = await response.text();
   assert.match(html, /<title>Хочу Так - сеть салонов красоты в Казани<\/title>/i);
-  assert.match(html, /aria-label="Не объясняй\. Просто скажи: Хочу так\."/);
+  assert.match(html, /Beauty house/);
   assert.match(html, /7 салонов/);
   assert.match(html, /70K\+/);
   assert.match(html, /Белинского, 18/);
   assert.match(html, /Записаться/);
-  assert.match(html, /Понятно/);
-  assert.match(html, /Юридическое/);
+  assert.match(html, /service menu/);
+  assert.match(html, /lookbook/);
   assert.doesNotMatch(html, /\/media\/logo\.jpg/);
   assert.doesNotMatch(html, /Your site is taking shape|codex-preview/i);
 
