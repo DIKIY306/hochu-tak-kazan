@@ -52,14 +52,16 @@ const addresses = [
 ];
 
 const works = [
-  ["/media/hero-before-after.jpg", "Color transformation", "сложное окрашивание"],
-  ["/media/work-blonde.jpg", "Clean blonde", "чистый блонд"],
-  ["/media/work-braid.jpg", "Braided detail", "плетение"],
-  ["/media/style-dark-updo.jpg", "Evening shape", "собранный вечер"],
-  ["/media/style-tiara.jpg", "Occasion hair", "праздничный образ"],
-  ["/media/work-kids.jpg", "Kids cut", "детская стрижка"],
-  ["/media/work-evening.jpg", "Glossy finish", "укладка"],
+  ["/media/hero-before-after.jpg", "Сложный цвет", "окрашивание"],
+  ["/media/work-blonde.jpg", "Чистый блонд", "тон и уход"],
+  ["/media/work-braid.jpg", "Плетение", "деталь образа"],
+  ["/media/style-dark-updo.jpg", "Вечерняя форма", "собранный образ"],
+  ["/media/style-tiara.jpg", "Празднично", "прическа с тиарой"],
+  ["/media/work-kids.jpg", "Детская стрижка", "спокойный визит"],
+  ["/media/work-evening.jpg", "Гладкий финиш", "укладка"],
 ];
+
+const proofPoints = ["7 салонов в Казани", "70K+ клиентов", "стоимость до начала", "можно с референсом"];
 
 const faqs = [
   ["Как записаться?", "Оставьте контакт, администратор уточнит услугу, район и предложит ближайшее свободное окно."],
@@ -86,32 +88,36 @@ export default function Home() {
       </header>
 
       <section className="hero" id="top">
-        <div className="hero-media" aria-label="Премиальная работа салона">
-          <img src="/media/style-dark-updo.jpg" alt="Вечерняя прическа в салоне Хочу Так" />
-          <div className="hero-media-overlay">
-            <span>7 салонов</span>
-            <span>70K+ клиентов</span>
-            <span>цена до услуги</span>
+        <div className="hero-copy">
+          <p className="eyebrow">Сеть салонов красоты в Казани</p>
+          <h1>Хочу Так</h1>
+          <p>
+            Стрижки, окрашивания, уходы и прически. Приходите с фото, выбирайте
+            удобный филиал, а стоимость обсудим до начала услуги.
+          </p>
+          <div className="hero-actions">
+            <a className="primary-button" href="#booking">Записаться</a>
+            <a className="secondary-button" href="#lookbook">Смотреть работы</a>
+          </div>
+          <div className="hero-proof" aria-label="Коротко о салонах">
+            {proofPoints.map((point) => (
+              <span key={point}>{point}</span>
+            ))}
           </div>
         </div>
 
-        <div className="hero-copy">
-          <p className="eyebrow">Сеть салонов красоты в Казани</p>
-          <h1>Beauty house для образа, который хочется показать мастеру.</h1>
-          <p>
-            Стрижки, окрашивания, уходы и прически в салонах, где можно прийти с
-            фото, быстро выбрать ближайший филиал и заранее понять стоимость.
-          </p>
-          <div className="hero-actions">
-            <a className="primary-button" href="#booking">Подобрать салон</a>
-            <a className="secondary-button" href="#lookbook">Смотреть работы</a>
-          </div>
+        <div className="hero-media" aria-label="Атмосфера салона Хочу Так">
+          <img src="/media/work-blonde.jpg" alt="Окрашивание и уход в салоне Хочу Так" />
+          <figure>
+            <img src="/media/style-dark-updo.jpg" alt="Вечерняя прическа в салоне Хочу Так" />
+            <figcaption>beauty house · kazan</figcaption>
+          </figure>
         </div>
 
         <aside className="booking-card" aria-label="Быстрая заявка">
           <span className="card-label">Быстрая запись</span>
-          <h2>Хочу так</h2>
-          <p>Оставьте контакт. Администратор подберет филиал, мастера и время.</p>
+          <h2>Подберем окно</h2>
+          <p>Оставьте контакт. Администратор уточнит услугу, район и удобное время.</p>
           <form aria-label="Форма быстрой записи">
             <label>
               Имя
@@ -134,16 +140,16 @@ export default function Home() {
 
       <section className="marquee" aria-label="Преимущества">
         <div>
-          <span>Hair</span>
-          <span>Color</span>
-          <span>Care</span>
-          <span>Makeup mood</span>
-          <span>7 locations</span>
-          <span>Hair</span>
-          <span>Color</span>
-          <span>Care</span>
-          <span>Makeup mood</span>
-          <span>7 locations</span>
+          <span>Стрижка</span>
+          <span>Окрашивание</span>
+          <span>Уход</span>
+          <span>Укладка</span>
+          <span>7 адресов</span>
+          <span>Стрижка</span>
+          <span>Окрашивание</span>
+          <span>Уход</span>
+          <span>Укладка</span>
+          <span>7 адресов</span>
         </div>
       </section>
 
@@ -153,10 +159,10 @@ export default function Home() {
         </figure>
         <div>
           <span>01</span>
-          <h2>Покажите референс. Мастер переведет его в реальную услугу.</h2>
+          <h2>Приходите с фото. Мы подскажем, как повторить образ.</h2>
           <p>
-            Что можно повторить, что лучше адаптировать, сколько времени займет
-            процедура и как сохранить результат после визита.
+            Мастер объяснит, что получится именно на ваших волосах, сколько
+            времени заложить и какой уход сохранить после визита.
           </p>
         </div>
         <figure>
@@ -167,8 +173,14 @@ export default function Home() {
       <section className="menu-section" id="menu">
         <div className="section-title">
           <span>Услуги</span>
-          <h2>Выберите, что хочется обновить</h2>
-          <p>Стрижка, цвет, уход или образ на событие. Если сомневаетесь, администратор подскажет, с чего начать.</p>
+          <h2>Меню услуг</h2>
+          <p>Коротко и понятно: что выбрать, сколько времени заложить и когда уточнить цену у мастера.</p>
+          <div className="section-points">
+            <span>стрижки</span>
+            <span>цвет</span>
+            <span>уход</span>
+            <span>укладки</span>
+          </div>
         </div>
         <div className="service-list">
           {services.map((service, index) => (
@@ -185,8 +197,14 @@ export default function Home() {
       <section className="lookbook" id="lookbook">
         <div className="section-title invert">
           <span>Работы</span>
-          <h2>Покажите мастеру, какой результат нравится</h2>
-          <p>Сохраните фото из галереи или принесите свой референс. Мастер объяснит, как адаптировать образ под ваши волосы.</p>
+          <h2>Работы клиентов</h2>
+          <p>Сохраните понравившийся образ или принесите свой референс на консультацию.</p>
+          <div className="section-points">
+            <span>блонд</span>
+            <span>плетения</span>
+            <span>детские</span>
+            <span>вечерние</span>
+          </div>
         </div>
         <div className="lookbook-grid">
           {works.map(([src, title, text], index) => (
@@ -204,8 +222,13 @@ export default function Home() {
       <section className="salons" id="salons">
         <div className="section-title">
           <span>Адреса</span>
-          <h2>Семь салонов в Казани</h2>
-          <p>Выберите удобный район, а администратор предложит ближайшее свободное время.</p>
+          <h2>Салоны рядом</h2>
+          <p>Выберите район, а администратор предложит ближайшее свободное время.</p>
+          <div className="section-points">
+            <span>7 филиалов</span>
+            <span>подбор по району</span>
+            <span>звонок администратора</span>
+          </div>
         </div>
         <div className="salon-strip">
           {addresses.map((address, index) => (
@@ -222,7 +245,7 @@ export default function Home() {
       <section className="booking-section" id="booking">
         <div>
           <span className="card-label">Запись</span>
-          <h2>Записаться без долгой переписки</h2>
+          <h2>Запись на сегодня</h2>
           <p>
             Оставьте телефон. Мы уточним услугу, филиал и подберем свободное окно
             у подходящего мастера.

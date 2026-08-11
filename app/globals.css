@@ -9,14 +9,14 @@
 }
 
 :root {
-  --bg: #f2eee6;
+  --bg: #e8e7e2;
   --ink: #10100f;
   --soft-ink: #292724;
-  --paper: #fbf8f0;
-  --gold: #c39a44;
-  --red: #9f182f;
-  --sage: #6b7a65;
-  --sky: #d8e3e7;
+  --paper: #fbfaf5;
+  --gold: #b6862e;
+  --red: #a7122c;
+  --sage: #596d5f;
+  --sky: #dce7e8;
   --line: rgba(16, 16, 15, 0.16);
   --muted: #706a60;
 }
@@ -71,7 +71,7 @@ p {
 
 .site-shell {
   background:
-    linear-gradient(90deg, rgba(16, 16, 15, 0.05) 1px, transparent 1px) 0 0 / 25vw 100%,
+    linear-gradient(90deg, rgba(16, 16, 15, 0.045) 1px, transparent 1px) 0 0 / 20vw 100%,
     var(--bg);
   min-height: 100vh;
   overflow: clip;
@@ -79,7 +79,7 @@ p {
 
 .topbar {
   align-items: center;
-  background: rgba(242, 238, 230, 0.88);
+  background: rgba(232, 231, 226, 0.88);
   backdrop-filter: blur(18px);
   border-bottom: 1px solid var(--line);
   display: grid;
@@ -98,15 +98,15 @@ p {
 }
 
 .brand strong {
-  font-size: clamp(32px, 3.8vw, 66px);
+  font-size: clamp(34px, 4.1vw, 74px);
   font-weight: 900;
-  line-height: 0.78;
+  line-height: 0.76;
   text-transform: uppercase;
 }
 
 .brand span,
 .card-label,
-.section-title span,
+.section-title > span,
 .eyebrow {
   color: var(--gold);
   font-size: 12px;
@@ -175,8 +175,8 @@ p {
 .hero {
   display: grid;
   gap: 12px;
-  grid-template-columns: minmax(340px, 0.88fr) minmax(0, 1.04fr) minmax(340px, 0.7fr);
-  min-height: calc(100vh - 86px);
+  grid-template-columns: minmax(360px, 0.9fr) minmax(380px, 1fr) minmax(320px, 0.62fr);
+  min-height: calc(100vh - 78px);
   padding: 12px;
 }
 
@@ -193,7 +193,8 @@ p {
 }
 
 .hero-media {
-  min-height: 700px;
+  background: var(--ink);
+  min-height: 660px;
   overflow: hidden;
   position: relative;
 }
@@ -205,69 +206,86 @@ p {
   width: 100%;
 }
 
+.hero-media video {
+  filter: saturate(0.82) contrast(1.05);
+}
+
 .hero-media::after {
-  background: linear-gradient(180deg, transparent 35%, rgba(16, 16, 15, 0.72));
+  background:
+    linear-gradient(180deg, rgba(16, 16, 15, 0.05), rgba(16, 16, 15, 0.62)),
+    linear-gradient(90deg, rgba(16, 16, 15, 0.32), transparent 58%);
   content: "";
   inset: 0;
   position: absolute;
 }
 
-.hero-media-overlay {
-  bottom: 22px;
-  color: #ffffff;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  left: 22px;
+.hero-media figure {
+  aspect-ratio: 0.82 / 1;
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  border-radius: 18px;
+  bottom: 16px;
+  max-width: 44%;
+  overflow: hidden;
   position: absolute;
-  right: 22px;
+  right: 16px;
+  width: 220px;
   z-index: 1;
 }
 
-.hero-media-overlay span {
-  border: 1px solid rgba(255, 255, 255, 0.34);
-  border-radius: 999px;
-  font-size: 13px;
+.hero-media figure img {
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-media figcaption {
+  background: rgba(16, 16, 15, 0.76);
+  bottom: 0;
+  color: #ffffff;
+  font-size: 11px;
   font-weight: 900;
-  padding: 9px 12px 7px;
+  left: 0;
+  letter-spacing: 0;
+  padding: 9px 10px 7px;
+  position: absolute;
+  right: 0;
   text-transform: uppercase;
 }
 
 .hero-copy {
-  align-content: space-between;
+  align-content: end;
   background:
-    linear-gradient(140deg, rgba(195, 154, 68, 0.18), transparent 42%),
+    linear-gradient(140deg, rgba(182, 134, 46, 0.18), transparent 44%),
     var(--ink);
   color: #ffffff;
   display: grid;
-  min-height: 700px;
+  gap: clamp(18px, 2.4vw, 30px);
+  min-height: 660px;
   overflow: hidden;
-  padding: clamp(24px, 5vw, 76px);
+  padding: clamp(24px, 4.6vw, 68px);
   position: relative;
 }
 
 .hero-copy::before {
   color: rgba(255, 255, 255, 0.045);
-  content: "ХОЧУ ТАК";
-  font-size: clamp(120px, 18vw, 290px);
+  content: "BEAUTY";
+  font-size: clamp(120px, 16vw, 260px);
   font-weight: 900;
   left: -18px;
   line-height: 0.78;
   position: absolute;
-  top: 42%;
+  top: 22px;
   white-space: nowrap;
 }
 
 .eyebrow {
-  margin-bottom: 18px;
   position: relative;
   z-index: 1;
 }
 
 h1 {
-  font-size: clamp(52px, 5.6vw, 88px);
+  font-size: clamp(70px, 9.2vw, 154px);
   font-weight: 900;
-  line-height: 0.82;
+  line-height: 0.76;
   max-width: 780px;
   position: relative;
   text-transform: uppercase;
@@ -276,9 +294,9 @@ h1 {
 
 .hero-copy p:not(.eyebrow) {
   color: rgba(255, 255, 255, 0.75);
-  font-size: clamp(18px, 1.75vw, 26px);
-  line-height: 1.32;
-  max-width: 720px;
+  font-size: clamp(18px, 1.45vw, 23px);
+  line-height: 1.35;
+  max-width: 620px;
   position: relative;
   z-index: 1;
 }
@@ -292,10 +310,40 @@ h1 {
   z-index: 1;
 }
 
+.hero-proof {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: clamp(4px, 1vw, 10px);
+  position: relative;
+  z-index: 1;
+}
+
+.hero-proof span {
+  border-top: 1px solid rgba(255, 255, 255, 0.22);
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 13px;
+  font-weight: 900;
+  padding-top: 10px;
+  text-transform: uppercase;
+}
+
 .primary-button,
 .secondary-button {
   min-height: 56px;
   padding: 2px 24px 0;
+}
+
+.hero-copy .primary-button {
+  background: #ffffff;
+  border-color: #ffffff;
+  color: var(--ink);
+}
+
+.hero-copy .primary-button:hover {
+  background: var(--red);
+  border-color: var(--red);
+  color: #ffffff;
 }
 
 .hero-copy .secondary-button {
@@ -308,16 +356,16 @@ h1 {
   background: var(--paper);
   border: 1px solid var(--line);
   display: grid;
-  gap: 18px;
+  gap: 16px;
   grid-template-rows: auto auto auto auto 1fr;
-  min-height: 700px;
-  padding: clamp(20px, 3vw, 36px);
+  min-height: 660px;
+  padding: clamp(18px, 2.5vw, 30px);
 }
 
 .booking-card h2 {
-  font-size: clamp(44px, 4.2vw, 70px);
+  font-size: clamp(32px, 3vw, 48px);
   font-weight: 900;
-  line-height: 0.86;
+  line-height: 0.95;
   text-transform: uppercase;
 }
 
@@ -351,9 +399,9 @@ select {
   appearance: none;
   background: #ffffff;
   border: 1px solid var(--line);
-  border-radius: 14px;
+  border-radius: 12px;
   color: var(--ink);
-  min-height: 58px;
+  min-height: 54px;
   padding: 0 14px;
   width: 100%;
 }
@@ -361,7 +409,7 @@ select {
 .booking-card button,
 .full-form button {
   cursor: pointer;
-  min-height: 58px;
+  min-height: 54px;
   width: 100%;
 }
 
@@ -385,7 +433,7 @@ select {
   background: var(--gold);
   color: var(--ink);
   overflow: hidden;
-  padding: 12px 0 9px;
+  padding: 10px 0 7px;
 }
 
 .marquee div {
@@ -412,16 +460,16 @@ select {
 .experience h2,
 .booking-section h2,
 .footer h2 {
-  font-size: clamp(28px, 3vw, 48px);
+  font-size: clamp(30px, 3.15vw, 52px);
   font-weight: 900;
-  line-height: 1.08;
+  line-height: 0.98;
   overflow-wrap: break-word;
   text-transform: uppercase;
 }
 
 .experience h2 {
-  font-size: clamp(30px, 3.4vw, 52px);
-  line-height: 1.06;
+  font-size: clamp(30px, 3vw, 48px);
+  line-height: 1.02;
 }
 
 .experience {
@@ -434,7 +482,7 @@ select {
 .experience figure,
 .experience > div {
   border-radius: 18px;
-  min-height: 520px;
+  min-height: 470px;
   overflow: hidden;
 }
 
@@ -469,19 +517,43 @@ select {
 .salons {
   display: grid;
   gap: 12px;
-  grid-template-columns: minmax(320px, 0.42fr) minmax(0, 1fr);
+  grid-template-columns: minmax(280px, 0.32fr) minmax(0, 1fr);
   padding: 12px;
 }
 
 .section-title {
-  align-content: center;
+  align-content: space-between;
   background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 18px;
   display: grid;
   gap: 22px;
-  min-height: 360px;
-  padding: clamp(22px, 3.4vw, 46px);
+  min-height: 300px;
+  padding: clamp(22px, 3vw, 40px);
+}
+
+.section-points {
+  align-self: end;
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  padding-top: 14px;
+}
+
+.section-points span {
+  color: var(--soft-ink);
+  font-size: 13px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.invert .section-points {
+  border-color: rgba(255, 255, 255, 0.16);
+}
+
+.invert .section-points span {
+  color: rgba(255, 255, 255, 0.82);
 }
 
 .service-list {
@@ -495,10 +567,10 @@ select {
   align-items: center;
   border-bottom: 1px solid rgba(255, 255, 255, 0.14);
   display: grid;
-  gap: 16px;
-  grid-template-columns: 42px minmax(170px, 0.62fr) minmax(220px, 1fr) minmax(112px, auto);
-  min-height: 82px;
-  padding: 16px clamp(18px, 2.4vw, 30px);
+  gap: 14px;
+  grid-template-columns: 38px minmax(150px, 0.56fr) minmax(220px, 1fr) minmax(106px, auto);
+  min-height: 76px;
+  padding: 14px clamp(18px, 2.2vw, 28px);
 }
 
 .service-list article:last-child {
@@ -514,7 +586,7 @@ select {
 }
 
 .service-list h3 {
-  font-size: clamp(22px, 1.9vw, 31px);
+  font-size: clamp(20px, 1.75vw, 28px);
   line-height: 1.04;
   overflow-wrap: anywhere;
   text-transform: uppercase;
@@ -530,7 +602,7 @@ select {
   background: var(--ink);
   display: grid;
   gap: 12px;
-  grid-template-columns: minmax(320px, 0.34fr) minmax(0, 1fr);
+  grid-template-columns: minmax(280px, 0.28fr) minmax(0, 1fr);
   padding: 12px;
 }
 
@@ -547,7 +619,7 @@ select {
   display: grid;
   gap: 12px;
   grid-auto-flow: dense;
-  grid-auto-rows: minmax(210px, 15.5vw);
+  grid-auto-rows: minmax(190px, 14.2vw);
   grid-template-columns: repeat(3, 1fr);
 }
 
@@ -560,6 +632,10 @@ select {
 .lookbook-main {
   grid-column: span 2;
   grid-row: span 2;
+}
+
+.lookbook-grid figure:last-child {
+  grid-column: span 3;
 }
 
 .lookbook-grid img {
@@ -603,12 +679,13 @@ select {
   border: 1px solid var(--line);
   border-radius: 18px;
   display: grid;
-  min-height: 210px;
-  padding: clamp(18px, 2.2vw, 28px);
+  gap: 8px;
+  min-height: 188px;
+  padding: clamp(16px, 2vw, 24px);
 }
 
 .salon-strip article:last-child {
-  grid-column: span 2;
+  grid-column: span 3;
 }
 
 .salon-strip span {
@@ -618,7 +695,7 @@ select {
 
 .salon-strip h3 {
   align-self: end;
-  font-size: clamp(22px, 2.1vw, 34px);
+  font-size: clamp(21px, 1.8vw, 30px);
   line-height: 1.04;
   overflow-wrap: anywhere;
   text-transform: uppercase;
@@ -644,12 +721,13 @@ select {
   gap: 12px;
   grid-template-columns: minmax(0, 0.95fr) minmax(340px, 0.65fr);
   margin: 12px;
-  padding: clamp(20px, 4vw, 58px);
+  padding: clamp(20px, 3.8vw, 54px);
 }
 
 .booking-section > div {
-  align-content: space-between;
+  align-content: center;
   display: grid;
+  gap: 22px;
 }
 
 .booking-section p {
@@ -681,7 +759,7 @@ select {
 }
 
 .footer h2 {
-  font-size: clamp(30px, 3.6vw, 58px);
+  font-size: clamp(28px, 3vw, 46px);
   margin-bottom: 18px;
 }
 
@@ -722,7 +800,7 @@ select {
   .hero-media,
   .hero-copy,
   .booking-card {
-    min-height: 560px;
+    min-height: 520px;
   }
 
   .experience {
@@ -743,6 +821,10 @@ select {
   .salon-strip,
   .footer {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .salon-strip article:last-child {
+    grid-column: span 2;
   }
 
   .footer section:first-child {
@@ -788,7 +870,7 @@ select {
   .hero-media,
   .hero-copy,
   .booking-card {
-    min-height: 470px;
+    min-height: 440px;
   }
 
   .hero-copy {
@@ -796,7 +878,11 @@ select {
   }
 
   h1 {
-    font-size: clamp(42px, 11.6vw, 56px);
+    font-size: clamp(56px, 18vw, 76px);
+  }
+
+  .hero-proof {
+    grid-template-columns: 1fr;
   }
 
   .hero-actions,
@@ -811,19 +897,19 @@ select {
 
   .section-title,
   .experience > div {
-    min-height: 240px;
+    min-height: 210px;
     padding: 22px;
   }
 
   .section-title h2,
   .experience h2,
   .booking-section h2 {
-    font-size: clamp(28px, 8vw, 42px);
-    line-height: 1.04;
+    font-size: clamp(28px, 7.4vw, 38px);
+    line-height: 1.03;
   }
 
   .experience h2 {
-    font-size: clamp(28px, 7.6vw, 38px);
+    font-size: clamp(27px, 7vw, 36px);
     line-height: 1.08;
   }
 
@@ -850,7 +936,7 @@ select {
   }
 
   .service-list h3 {
-    font-size: clamp(24px, 8vw, 34px);
+    font-size: clamp(23px, 7.4vw, 32px);
   }
 
   .service-list p,
@@ -859,6 +945,7 @@ select {
   }
 
   .lookbook-main,
+  .lookbook-grid figure:last-child,
   .salon-strip article:last-child,
   .footer section:first-child {
     grid-column: auto;
