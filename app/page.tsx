@@ -65,7 +65,7 @@ const faqs = [
   ["Как записаться?", "Оставьте контакт, администратор уточнит услугу, район и предложит ближайшее свободное окно."],
   ["Стоимость будет известна заранее?", "Да. Мастер проговаривает стоимость до начала услуги, особенно если нужен цвет, уход или сложная техника."],
   ["Можно прийти с фото?", "Да. Референс помогает быстрее понять желаемый образ и объяснить, что получится именно на ваших волосах."],
-  ["Форма уже рабочая?", "Пока это дизайн-макет для согласования. После утверждения подключим отправку заявок и нужную логику."],
+  ["Есть гарантия?", "Если результат не соответствует согласованному запросу, администратор поможет разобраться и предложит решение."],
 ];
 
 export default function Home() {
@@ -109,7 +109,7 @@ export default function Home() {
         </div>
 
         <aside className="booking-card" aria-label="Быстрая заявка">
-          <span className="card-label">quick booking</span>
+          <span className="card-label">Быстрая запись</span>
           <h2>Хочу так</h2>
           <p>Оставьте контакт. Администратор подберет филиал, мастера и время.</p>
           <form aria-label="Форма быстрой записи">
@@ -147,32 +147,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="manifest">
-        <div className="manifest-title">
-          <p className="eyebrow">Как у сильных салонных брендов</p>
-          <h2>Сайт должен продавать не стрижку, а уверенность: «здесь меня поймут».</h2>
-        </div>
-        <div className="manifest-copy">
-          <p>
-            Поэтому в новом макете на первом месте атмосфера, реальное фото,
-            понятный путь к записи, меню услуг и адреса. Меньше случайных карточек,
-            больше ощущения салона, куда хочется записаться.
-          </p>
-          <div className="manifest-stats" aria-label="Факты о сети">
-            <strong>7</strong>
-            <span>салонов в Казани</span>
-            <strong>70K+</strong>
-            <span>клиентов сети</span>
-          </div>
-          <div className="manifest-points">
-            <span>фото впереди текста</span>
-            <span>запись всегда рядом</span>
-            <span>услуги с длительностью</span>
-            <span>сеть видно сразу</span>
-          </div>
-        </div>
-      </section>
-
       <section className="experience">
         <figure>
           <img src="/media/style-tiara.jpg" alt="Праздничная прическа с тиарой" />
@@ -192,9 +166,9 @@ export default function Home() {
 
       <section className="menu-section" id="menu">
         <div className="section-title">
-          <span>service menu</span>
-          <h2>Услуги без лишней витрины</h2>
-          <p>Как в хороших барбершопах: понятно, что выбрать, сколько заложить времени и когда спросить цену у мастера.</p>
+          <span>Услуги</span>
+          <h2>Выберите, что хочется обновить</h2>
+          <p>Стрижка, цвет, уход или образ на событие. Если сомневаетесь, администратор подскажет, с чего начать.</p>
         </div>
         <div className="service-list">
           {services.map((service, index) => (
@@ -210,9 +184,9 @@ export default function Home() {
 
       <section className="lookbook" id="lookbook">
         <div className="section-title invert">
-          <span>lookbook</span>
-          <h2>Реальные работы как главный аргумент</h2>
-          <p>Фото не прячутся в маленькую галерею. Они создают настроение и сразу показывают уровень результата.</p>
+          <span>Работы</span>
+          <h2>Покажите мастеру, какой результат нравится</h2>
+          <p>Сохраните фото из галереи или принесите свой референс. Мастер объяснит, как адаптировать образ под ваши волосы.</p>
         </div>
         <div className="lookbook-grid">
           {works.map(([src, title, text], index) => (
@@ -229,9 +203,9 @@ export default function Home() {
 
       <section className="salons" id="salons">
         <div className="section-title">
-          <span>locations</span>
+          <span>Адреса</span>
           <h2>Семь салонов в Казани</h2>
-          <p>Выбор филиала становится частью записи, а не отдельным поиском адреса внизу сайта.</p>
+          <p>Выберите удобный район, а администратор предложит ближайшее свободное время.</p>
         </div>
         <div className="salon-strip">
           {addresses.map((address, index) => (
@@ -247,11 +221,11 @@ export default function Home() {
 
       <section className="booking-section" id="booking">
         <div>
-          <span className="card-label">final step</span>
+          <span className="card-label">Запись</span>
           <h2>Записаться без долгой переписки</h2>
           <p>
-            Пока форма работает как дизайн-прототип. После утверждения подключим
-            отправку заявок, уведомления и нужную CRM или таблицу.
+            Оставьте телефон. Мы уточним услугу, филиал и подберем свободное окно
+            у подходящего мастера.
           </p>
         </div>
         <form className="full-form" aria-label="Форма записи">

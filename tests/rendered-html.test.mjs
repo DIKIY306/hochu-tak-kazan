@@ -37,8 +37,9 @@ test("server-renders the Hochu Tak design draft", async () => {
   assert.match(html, /70K\+/);
   assert.match(html, /Белинского, 18/);
   assert.match(html, /Записаться/);
-  assert.match(html, /service menu/);
-  assert.match(html, /lookbook/);
+  assert.match(html, /Выберите, что хочется обновить/);
+  assert.match(html, /Покажите мастеру/);
+  assert.doesNotMatch(html, /Сайт должен продавать|главный аргумент|service menu|final step/i);
   assert.doesNotMatch(html, /\/media\/logo\.jpg/);
   assert.doesNotMatch(html, /Your site is taking shape|codex-preview/i);
 
