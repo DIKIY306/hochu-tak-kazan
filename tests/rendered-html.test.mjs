@@ -25,22 +25,21 @@ async function render() {
   );
 }
 
-test("server-renders the Hochu Tak design draft", async () => {
+test("server-renders the Hochu Tak quality rescue design", async () => {
   const response = await render();
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
   assert.match(html, /<title>Хочу Так - сеть салонов красоты в Казани<\/title>/i);
-  assert.match(html, /Beauty house/);
   assert.match(html, /7 салонов/);
-  assert.match(html, /70K\+/);
   assert.match(html, /Белинского, 18/);
   assert.match(html, /Записаться/);
-  assert.match(html, /Выберите, что хочется обновить/);
-  assert.match(html, /Покажите мастеру/);
+  assert.match(html, /Выберите, что хочется изменить/);
+  assert.match(html, /Результаты, которые можно показать мастеру/);
+  assert.match(html, /От идеи к понятному результату/);
   assert.match(html, /Праздничный образ/);
-  assert.doesNotMatch(html, /Сайт должен продавать|главный аргумент|service menu|final step|Color transformation|Clean blonde/i);
+  assert.doesNotMatch(html, /70K\+|Сайт должен продавать|главный аргумент|service menu|final step|Color transformation|Clean blonde/i);
   assert.doesNotMatch(html, /\/media\/logo\.jpg/);
   assert.doesNotMatch(html, /Your site is taking shape|codex-preview/i);
 
