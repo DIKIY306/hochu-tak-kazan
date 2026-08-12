@@ -33,15 +33,53 @@ await cp(clientDir, pagesDir, { recursive: true });
 
 const withBasePath = (source) =>
   source
-    .replaceAll('"/_next/', `"${basePath}/_next/`)
-    .replaceAll("'/_next/", `'${basePath}/_next/`)
+    .replaceAll("/_next/", `${basePath}/_next/`)
     .replaceAll('"/media/', `"${basePath}/media/`)
     .replaceAll("'/media/", `'${basePath}/media/`)
     .replaceAll("url(/fonts/", `url(${basePath}/fonts/`)
     .replaceAll('url("/fonts/', `url("${basePath}/fonts/`)
     .replaceAll('href="/favicon.svg"', `href="${basePath}/favicon.svg"`);
 
-const html = withBasePath(await response.text());
+const staticBehavior = `<script>
+(() => {
+  const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const revealItems = [...document.querySelectorAll("[data-reveal]")];
+  if (!reduceMotion && "IntersectionObserver" in window) {
+    revealItems.forEach((item) => item.classList.add("reveal-pending"));
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-visible");
+        revealObserver.unobserve(entry.target);
+      });
+    }, { rootMargin: "0px 0px -12%", threshold: 0.12 });
+    revealItems.forEach((item) => revealObserver.observe(item));
+  }
+
+  document.querySelectorAll(".mobile-nav a").forEach((link) => {
+    link.addEventListener("click", () => link.closest("details")?.removeAttribute("open"));
+  });
+
+  const booking = document.querySelector("#booking");
+  const stickyCta = document.querySelector(".mobile-sticky-cta");
+  let bookingVisible = false;
+  const updateCta = () => stickyCta?.classList.toggle("is-visible", scrollY > 520 && !bookingVisible);
+  if (booking && "IntersectionObserver" in window) {
+    const bookingObserver = new IntersectionObserver(([entry]) => {
+      bookingVisible = entry.isIntersecting;
+      updateCta();
+    }, { threshold: 0.08 });
+    bookingObserver.observe(booking);
+  }
+  addEventListener("scroll", updateCta, { passive: true });
+  updateCta();
+})();
+</script>`;
+
+const html = (await response.text())
+  .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, "")
+  .replace(/<link\b[^>]*rel="modulepreload"[^>]*>/gi, "")
+  .replace("</body>", `${staticBehavior}</body>`);
 await writeFile(path.join(pagesDir, "index.html"), html);
 await writeFile(path.join(pagesDir, "404.html"), html);
 await writeFile(path.join(pagesDir, ".nojekyll"), "");
