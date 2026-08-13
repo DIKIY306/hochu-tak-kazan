@@ -32,14 +32,23 @@ test("server-renders the Hochu Tak quality rescue design", async () => {
 
   const html = await response.text();
   assert.match(html, /<title>Хочу Так - сеть салонов красоты в Казани<\/title>/i);
-  assert.match(html, /7 салонов/);
+  assert.match(html, /Песчаные Ковали, Октябрьская, 29в/);
+  assert.match(html, /70K\+/);
+  assert.match(html, /6 лет/);
   assert.match(html, /Белинского, 18/);
   assert.match(html, /Записаться/);
   assert.match(html, /Выберите, что хочется изменить/);
   assert.match(html, /Результаты, которые можно показать мастеру/);
   assert.match(html, /От идеи к понятному результату/);
   assert.match(html, /Праздничный образ/);
-  assert.doesNotMatch(html, /70K\+|Сайт должен продавать|главный аргумент|service menu|final step|Color transformation|Clean blonde/i);
+  assert.match(html, /На карте/);
+  assert.match(html, /t\.me\/Salon_Hochu_Tak/);
+  assert.match(html, /vk\.com\/hochutak_kzn/);
+  assert.match(html, /instagram\.com\/hochutak_kzn/);
+  assert.match(html, /id="works-women"/);
+  assert.match(html, /id="works-hairstyles"/);
+  assert.match(html, /Подберите ближайший салон к вам/);
+  assert.doesNotMatch(html, /Сайт должен продавать|главный аргумент|service menu|final step|Color transformation|Clean blonde/i);
   assert.doesNotMatch(html, /\/media\/logo\.jpg/);
   assert.doesNotMatch(html, /Your site is taking shape|codex-preview/i);
 

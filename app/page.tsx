@@ -7,61 +7,86 @@ const services = [
     title: "Женская стрижка",
     text: "Консультация, форма и легкая укладка после услуги.",
     meta: "40-60 мин",
+    target: "works-women",
   },
   {
     title: "Мужская стрижка",
     text: "Мойка головы бесплатно, аккуратная форма и укладка.",
     meta: "35-50 мин",
+    target: "works-men",
   },
   {
     title: "Детская стрижка",
     text: "Спокойно, быстро и без лишнего ожидания.",
     meta: "от 3 лет",
+    target: "works-kids",
   },
   {
     title: "Окрашивание",
     text: "Тон, блонд, сложные техники и консультация по уходу.",
     meta: "цена заранее",
+    target: "works-color",
   },
   {
     title: "Уходы",
     text: "Блеск, плотность, восстановление и мягкость волос.",
     meta: "под задачу",
+    target: "works-care",
   },
   {
     title: "Завивка",
     text: "Долговременная текстура и форма после диагностики.",
     meta: "по консультации",
+    target: "works-curl",
   },
   {
     title: "Укладки",
     text: "Образ на день, вечер, свидание, выпускной или съемку.",
     meta: "в день записи",
+    target: "works-styling",
   },
   {
     title: "Прически",
     text: "Свадьба, праздник, тиара, плетение или собранный образ.",
     meta: "по референсу",
+    target: "works-hairstyles",
   },
 ];
 
 const addresses = [
-  "Белинского, 18",
-  "Галимджана Баруди, 8",
-  "Юлиуса Фучика, 105а",
-  "Лиственная, 23а",
-  "Дубравная, 51г",
-  "Рауиса Гареева, 92",
-  "Песчаные Ковали, Октябрьская, 29в",
+  { name: "Белинского, 18", mapUrl: "https://2gis.ru/kazan/search/%D0%A5%D0%BE%D1%87%D1%83%20%D0%A2%D0%B0%D0%BA%20%D0%91%D0%B5%D0%BB%D0%B8%D0%BD%D1%81%D0%BA%D0%BE%D0%B3%D0%BE%2018" },
+  { name: "Галимджана Баруди, 8", mapUrl: "https://2gis.ru/kazan/firm/70000001035977133" },
+  { name: "Юлиуса Фучика, 105а", mapUrl: "https://2gis.ru/kazan/firm/70000001068093210" },
+  { name: "Лиственная, 23а", mapUrl: "https://2gis.ru/kazan/firm/70000001057496248" },
+  { name: "Дубравная, 51г", mapUrl: "https://2gis.ru/kazan/firm/70000001036207762" },
+  { name: "Рауиса Гареева, 92", mapUrl: "https://2gis.ru/kazan/firm/70000001039284518" },
+  { name: "Песчаные Ковали, Октябрьская, 29в", mapUrl: "https://2gis.ru/kazan/firm/70000001075541080" },
 ];
 
-const works = [
-  ["/media/color-crop.jpg", "Мягкий блонд", "цвет и укладка"],
-  ["/media/work-evening.jpg", "Собранный образ", "вечерняя прическа"],
-  ["/media/work-blonde-crop.jpg", "Чистый тон", "окрашивание"],
-  ["/media/work-kids.jpg", "Текстура", "детская стрижка"],
-  ["/media/style-tiara.jpg", "Праздничный образ", "прическа с тиарой"],
-  ["/media/work-braid-crop.jpg", "Плетение", "деталь образа"],
+const workCategories = [
+  { id: "works-women", title: "Женские стрижки", text: "Форма и длина под особенности волос.", src: "/media/hero-before-after.jpg", alt: "Женская работа с формой и цветом волос" },
+  { id: "works-men", title: "Мужские стрижки", text: "Аккуратная форма, мойка и укладка.", src: "/media/work-kids.jpg", alt: "Мужская текстурная стрижка" },
+  { id: "works-kids", title: "Детские стрижки", text: "Для детей от трех лет.", src: "/media/work-kids.jpg", alt: "Детская текстурная стрижка" },
+  { id: "works-color", title: "Окрашивание", text: "Тон, блонд и сложные техники.", src: "/media/color-crop.jpg", alt: "Сложное окрашивание волос" },
+  { id: "works-care", title: "Уходовые процедуры", text: "Блеск, плотность и восстановление.", src: "/media/work-blonde-crop.jpg", alt: "Гладкие ухоженные светлые волосы" },
+  { id: "works-curl", title: "Химические завивки", text: "Текстура после консультации мастера.", src: "/media/work-kids.jpg", alt: "Выраженная текстура и завиток волос" },
+  { id: "works-styling", title: "Укладки", text: "Образ на день или событие.", src: "/media/work-braid-crop.jpg", alt: "Укладка с плетением" },
+  { id: "works-hairstyles", title: "Прически", text: "Собранные и праздничные образы.", src: "/media/work-evening.jpg", alt: "Собранная вечерняя прическа" },
+];
+
+const heroWorks = [
+  ["/media/hero-before-after.jpg", "Окрашивание и плетение"],
+  ["/media/work-kids.jpg", "Текстурная стрижка"],
+  ["/media/work-evening.jpg", "Вечерняя прическа"],
+  ["/media/work-blonde.jpg", "Мягкий блонд"],
+  ["/media/style-tiara.jpg", "Праздничный образ"],
+  ["/media/work-braid.jpg", "Плетение"],
+];
+
+const socialLinks = [
+  { label: "Telegram", href: "https://t.me/Salon_Hochu_Tak", mark: "/social-telegram.svg" },
+  { label: "ВКонтакте", href: "https://vk.com/hochutak_kzn", mark: "/social-vk.svg" },
+  { label: "Instagram", href: "https://www.instagram.com/hochutak_kzn?igsh=a2FjeG5oNjVrcGl2", mark: "/social-instagram.svg" },
 ];
 
 const faqs = [
@@ -80,6 +105,14 @@ const faqs = [
   [
     "Как выбрать филиал?",
     "Выберите удобный адрес в списке. Администратор уточнит услугу и предложит подходящее время.",
+  ],
+  [
+    "Есть ли гарантия на результат?",
+    "Да. Если результат не соответствует согласованному запросу, салон исправит работу или вернет деньги.",
+  ],
+  [
+    "Есть ли акции и сертификаты?",
+    "Да. В сети действуют меняющиеся акции, программа лояльности и подарочные сертификаты. Актуальные условия уточнит администратор.",
   ],
 ];
 
@@ -156,6 +189,21 @@ export default function Home() {
           <a href="#faq">FAQ</a>
         </nav>
 
+        <nav className="header-socials" aria-label="Социальные сети">
+          {socialLinks.map((social) => (
+            <a
+              href={social.href}
+              aria-label={social.label}
+              title={social.label}
+              target="_blank"
+              rel="noreferrer"
+              key={social.label}
+            >
+              <img src={social.mark} alt="" width="18" height="18" />
+            </a>
+          ))}
+        </nav>
+
         <a className="header-cta" href="#booking">
           Записаться
         </a>
@@ -167,6 +215,13 @@ export default function Home() {
             <a href="#works" onClick={(event) => event.currentTarget.closest("details")?.removeAttribute("open")}>Работы</a>
             <a href="#salons" onClick={(event) => event.currentTarget.closest("details")?.removeAttribute("open")}>Салоны</a>
             <a href="#faq" onClick={(event) => event.currentTarget.closest("details")?.removeAttribute("open")}>FAQ</a>
+            <span className="mobile-socials">
+              {socialLinks.map((social) => (
+                <a href={social.href} target="_blank" rel="noreferrer" key={social.label}>
+                  <img src={social.mark} alt="" width="18" height="18" /> {social.label}
+                </a>
+              ))}
+            </span>
           </div>
         </details>
       </header>
@@ -189,34 +244,34 @@ export default function Home() {
           </div>
           <dl className="hero-facts" aria-label="Кратко о сети">
             <div>
-              <dt>7</dt>
-              <dd>салонов в Казани</dd>
+              <dt>70K+</dt>
+              <dd>клиентов доверили нам волосы</dd>
             </div>
             <div>
-              <dt>Референс</dt>
-              <dd>помогает обсудить результат</dd>
+              <dt>6 лет</dt>
+              <dd>работаем в Казани</dd>
             </div>
             <div>
               <dt>До начала</dt>
-              <dd>обсуждаем стоимость</dd>
+              <dd>фиксируем стоимость без доплат</dd>
             </div>
           </dl>
         </div>
 
-        <figure className="hero-visual reference-frame">
-          <img
-            src="/media/style-dark-updo.jpg"
-            alt="Собранная вечерняя прическа, выполненная в салоне Хочу Так"
-            width="898"
-            height="1280"
-            decoding="async"
-            fetchPriority="high"
-          />
-          <figcaption>
-            <span>Референс 01</span>
-            <strong>Собранный образ</strong>
-          </figcaption>
-        </figure>
+        <div className="hero-visual hero-collage reference-frame" aria-label="Коллаж работ салонов Хочу Так">
+          {heroWorks.map(([src, alt], index) => (
+            <figure key={src}>
+              <img
+                src={src}
+                alt={alt}
+                width="1280"
+                height="1280"
+                decoding="async"
+                fetchPriority={index === 0 ? "high" : undefined}
+              />
+            </figure>
+          ))}
+        </div>
       </section>
 
       <section className="service-section" id="services">
@@ -231,12 +286,13 @@ export default function Home() {
 
         <div className="service-list">
           {services.map((service, index) => (
-            <article className="service-row" key={service.title}>
+            <a className="service-row" href={`#${service.target}`} key={service.title}>
               <span className="row-number">{String(index + 1).padStart(2, "0")}</span>
               <h3>{service.title}</h3>
               <p>{service.text}</p>
               <span className="row-meta">{service.meta}</span>
-            </article>
+              <span className="row-arrow" aria-hidden="true">→</span>
+            </a>
           ))}
         </div>
       </section>
@@ -251,23 +307,27 @@ export default function Home() {
           </p>
         </header>
 
-        <div className="works-grid">
-          {works.map(([src, title, text], index) => (
-            <figure
-              className={`work-item ${index === 0 ? "work-item-featured reference-frame" : ""}`}
+        <div className="work-categories">
+          {workCategories.map((work, index) => (
+            <article
+              className="work-category"
+              id={work.id}
               data-reveal="image"
               style={{ "--reveal-delay": `${Math.min(index, 2) * 90}ms` } as React.CSSProperties}
-              key={`${src}-${title}`}
+              key={work.id}
             >
-              <div className="work-image">
-                <img src={src} alt={`${title}: ${text}`} loading="lazy" decoding="async" />
-              </div>
-              <figcaption>
+              <header>
                 <span>{String(index + 1).padStart(2, "0")}</span>
-                <strong>{title}</strong>
-                <small>{text}</small>
-              </figcaption>
-            </figure>
+                <div>
+                  <h3>{work.title}</h3>
+                  <p>{work.text}</p>
+                </div>
+                <a href="#booking">Записаться <span aria-hidden="true">→</span></a>
+              </header>
+              <figure className="work-category-image">
+                <img src={work.src} alt={work.alt} loading="lazy" decoding="async" />
+              </figure>
+            </article>
           ))}
         </div>
       </section>
@@ -293,8 +353,8 @@ export default function Home() {
           <p className="section-index">04 · Адреса</p>
           <h2>Выберите салон в своем районе.</h2>
           <p>
-            Семь адресов в Казани. После выбора администратор уточнит услугу и
-            предложит свободное время.
+            Подберите ближайший салон к вам. Откройте адрес на карте 2ГИС,
+            постройте маршрут или переходите к записи.
           </p>
           <a className="button button-secondary" href="#booking">
             Перейти к записи
@@ -303,11 +363,11 @@ export default function Home() {
 
         <ol className="salon-list">
           {addresses.map((address, index) => (
-            <li key={address}>
+            <li key={address.name}>
               <span>{String(index + 1).padStart(2, "0")}</span>
-              <strong>{address}</strong>
-              <a href="#booking" aria-label={`Выбрать салон: ${address}`}>
-                Выбрать <span aria-hidden="true">→</span>
+              <strong>{address.name}</strong>
+              <a href={address.mapUrl} target="_blank" rel="noreferrer" aria-label={`Открыть в 2ГИС: ${address.name}`}>
+                На карте <span aria-hidden="true">↗</span>
               </a>
             </li>
           ))}
@@ -357,7 +417,7 @@ export default function Home() {
                 Выберите адрес
               </option>
               {addresses.map((address) => (
-                <option key={address}>{address}</option>
+                <option key={address.name}>{address.name}</option>
               ))}
             </select>
           </label>
@@ -391,7 +451,6 @@ export default function Home() {
           <span>салоны красоты · Казань</span>
         </a>
         <div>
-          <p>7 салонов в Казани</p>
           <a href="#salons">Выбрать адрес</a>
           <a href="#booking">Записаться</a>
         </div>

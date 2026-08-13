@@ -36,6 +36,8 @@ const withBasePath = (source) =>
     .replaceAll("/_next/", `${basePath}/_next/`)
     .replaceAll('"/media/', `"${basePath}/media/`)
     .replaceAll("'/media/", `'${basePath}/media/`)
+    .replaceAll('"/social-', `"${basePath}/social-`)
+    .replaceAll("'/social-", `'${basePath}/social-`)
     .replaceAll("url(/fonts/", `url(${basePath}/fonts/`)
     .replaceAll('url("/fonts/', `url("${basePath}/fonts/`)
     .replaceAll('href="/favicon.svg"', `href="${basePath}/favicon.svg"`);
