@@ -40,7 +40,7 @@ test("server-renders the Hochu Tak quality rescue design", async () => {
   assert.match(html, /Выберите, что хочется изменить/);
   assert.match(html, /Результаты, которые можно показать мастеру/);
   assert.match(html, /От идеи к понятному результату/);
-  assert.match(html, /Праздничный образ/);
+  assert.match(html, /Вечерняя собранная прическа/);
   assert.match(html, /На карте/);
   assert.match(html, /t\.me\/Salon_Hochu_Tak/);
   assert.match(html, /vk\.com\/hochutak_kzn/);
@@ -50,7 +50,9 @@ test("server-renders the Hochu Tak quality rescue design", async () => {
   assert.match(html, /Подберите ближайший салон к вам/);
   assert.match(html, /\+7 986 925-93-96/);
   assert.match(html, /href="tel:\+79869259396"/);
-  assert.match(html, /hero-before-after\.webp/);
+  assert.match(html, /hero-smooth\.webp/);
+  assert.match(html, /service-color\.webp/);
+  assert.match(html, /service-perm\.webp/);
   assert.match(html, /ИП Блинов Тимур Хабибуллаевич/);
   assert.match(html, /ИНН[\s\S]{0,80}161405161457/);
   assert.match(html, /href="\/privacy\/"/);

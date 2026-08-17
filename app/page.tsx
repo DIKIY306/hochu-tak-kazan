@@ -68,20 +68,20 @@ const workCategories = [
   { id: "works-women", title: "Женские стрижки", text: "Форма и длина под особенности волос.", src: "/media/hero-before-after.webp", alt: "Женская работа с формой и цветом волос", split: true },
   { id: "works-men", title: "Мужские стрижки", text: "Аккуратная форма, мойка и укладка.", src: "/media/work-kids.webp", alt: "Мужская текстурная стрижка" },
   { id: "works-kids", title: "Детские стрижки", text: "Для детей от трех лет.", src: "/media/work-kids.webp", alt: "Детская текстурная стрижка" },
-  { id: "works-color", title: "Окрашивание", text: "Тон, блонд и сложные техники.", src: "/media/color-crop.webp", alt: "Сложное окрашивание волос" },
+  { id: "works-color", title: "Окрашивание", text: "Тон, блонд и сложные техники.", src: "/media/service-color.webp", alt: "Фиолетовое окрашивание волос" },
   { id: "works-care", title: "Уходовые процедуры", text: "Блеск, плотность и восстановление.", src: "/media/work-blonde-crop.webp", alt: "Гладкие ухоженные светлые волосы" },
-  { id: "works-curl", title: "Химические завивки", text: "Текстура после консультации мастера.", src: "/media/work-kids.webp", alt: "Выраженная текстура и завиток волос" },
+  { id: "works-curl", title: "Химические завивки", text: "Текстура после консультации мастера.", src: "/media/service-perm.webp", alt: "Химическая завивка волос" },
   { id: "works-styling", title: "Укладки", text: "Образ на день или событие.", src: "/media/work-braid-crop.webp", alt: "Укладка с плетением" },
   { id: "works-hairstyles", title: "Прически", text: "Собранные и праздничные образы.", src: "/media/work-evening.webp", alt: "Собранная вечерняя прическа" },
 ];
 
 const heroWorks = [
-  { src: "/media/hero-before-after.webp", alt: "Окрашивание и плетение", split: true },
-  { src: "/media/work-kids.webp", alt: "Текстурная стрижка" },
-  { src: "/media/work-evening.webp", alt: "Вечерняя прическа" },
-  { src: "/media/work-blonde.webp", alt: "Мягкий блонд", split: true },
-  { src: "/media/style-tiara.webp", alt: "Праздничный образ" },
-  { src: "/media/work-braid.webp", alt: "Плетение", split: true },
+  { src: "/media/hero-smooth.webp", alt: "Гладкие окрашенные волосы", split: true },
+  { src: "/media/hero-updo.webp", alt: "Вечерняя собранная прическа" },
+  { src: "/media/hero-kids-design.webp", alt: "Детская стрижка с выбритым рисунком" },
+  { src: "/media/hero-mens-cut.webp", alt: "Мужская стрижка" },
+  { src: "/media/hero-platinum.webp", alt: "Холодный блонд с плетением" },
+  { src: "/media/hero-curly.webp", alt: "Мужская стрижка с кудрявой текстурой" },
 ];
 
 const socialLinks = [
