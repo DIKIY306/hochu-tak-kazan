@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { businessMailLinks, company } from "./company";
 
 const services = [
   {
@@ -421,6 +422,15 @@ export default function Home() {
               ))}
             </select>
           </label>
+          <label className="form-consent">
+            <input type="checkbox" name="privacy-consent" required />
+            <span>
+              Соглашаюсь с условиями{" "}
+              <a href="/privacy/" target="_blank" rel="noreferrer">
+                политики обработки персональных данных
+              </a>
+            </span>
+          </label>
           <button className="button button-primary" type="button">
             Отправить заявку
           </button>
@@ -446,20 +456,48 @@ export default function Home() {
       </section>
 
       <footer className="footer">
-        <a className="footer-brand" href="#top">
-          <strong>Хочу Так</strong>
-          <span>салоны красоты · Казань</span>
-        </a>
-        <div>
-          <a href="#salons">Выбрать адрес</a>
+        <div className="footer-intro">
+          <a className="footer-brand" href="#top">
+            <strong>Хочу Так</strong>
+            <span>салоны красоты · Казань</span>
+          </a>
+          <p className="footer-label">Колл-центр</p>
+          <a className="footer-phone" href={company.phoneHref}>
+            {company.phone}
+          </a>
+          <span className="footer-hours">Время работы: {company.workingHours}</span>
+        </div>
+
+        <nav className="footer-links" aria-label="Разделы сайта">
+          <p className="footer-label">Разделы</p>
+          <a href="#salons">Наши салоны</a>
           <a href="#booking">Записаться</a>
+          <a href="https://t.me/Salon_Hochu_Tak" target="_blank" rel="noreferrer">Telegram</a>
+          <a href="https://vk.com/hochutak_kzn" target="_blank" rel="noreferrer">ВКонтакте</a>
+        </nav>
+
+        <nav className="footer-links" aria-label="Для партнеров и сотрудников">
+          <p className="footer-label">Компания</p>
+          {businessMailLinks.map((link) => (
+            <a href={link.href} key={link.label}>{link.label}</a>
+          ))}
+        </nav>
+
+        <div className="footer-company">
+          <p className="footer-label">Реквизиты</p>
+          <strong>{company.legalName}</strong>
+          <span>ИНН {company.inn}</span>
+          <span>ОГРНИП {company.ogrnip}</span>
+          <span>{company.legalAddress}</span>
+          <a href={company.emailHref}>{company.email}</a>
+          <a className="footer-policy" href="/privacy/">
+            Политика обработки персональных данных
+          </a>
         </div>
-        <div className="legal-list" aria-label="Документы">
-          <span>Политика обработки персональных данных</span>
-          <span>Согласие на обработку персональных данных</span>
-          <span>Публичная информация об услугах</span>
-        </div>
-        <p className="copyright">© 2026 «Хочу Так»</p>
+
+        <p className="copyright">
+          © {company.founded}-2026 «Хочу Так». Правообладатель: {company.legalName}
+        </p>
       </footer>
 
       <a

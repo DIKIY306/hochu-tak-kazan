@@ -4,13 +4,13 @@ import test from "node:test";
 
 const templateRoot = new URL("../", import.meta.url);
 
-async function render() {
+async function render(pathname = "/") {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
   const { default: worker } = await import(workerUrl.href);
 
   return worker.fetch(
-    new Request("http://localhost/", {
+    new Request(`http://localhost${pathname}`, {
       headers: { accept: "text/html" },
     }),
     {
@@ -48,9 +48,25 @@ test("server-renders the Hochu Tak quality rescue design", async () => {
   assert.match(html, /id="works-women"/);
   assert.match(html, /id="works-hairstyles"/);
   assert.match(html, /Подберите ближайший салон к вам/);
+  assert.match(html, /\+7 986 925-93-96/);
+  assert.match(html, /ИП Блинов Тимур Хабибуллаевич/);
+  assert.match(html, /ИНН[\s\S]{0,80}161405161457/);
+  assert.match(html, /href="\/privacy\/"/);
   assert.doesNotMatch(html, /Сайт должен продавать|главный аргумент|service menu|final step|Color transformation|Clean blonde/i);
   assert.doesNotMatch(html, /\/media\/logo\.jpg/);
   assert.doesNotMatch(html, /Your site is taking shape|codex-preview/i);
 
   await assert.rejects(access(new URL("app/_sites-preview", templateRoot)));
+});
+
+test("server-renders the privacy policy with confirmed operator details", async () => {
+  const response = await render("/privacy");
+  assert.equal(response.status, 200);
+
+  const html = await response.text();
+  assert.match(html, /Политика обработки персональных данных/);
+  assert.match(html, /ИП Блинов Тимур Хабибуллаевич/);
+  assert.match(html, /ОГРНИП[\s\S]{0,80}320169000078590/);
+  assert.match(html, /blinovtimar@gmail\.com/);
+  assert.doesNotMatch(html, /\{organisation_name\}/);
 });

@@ -10,22 +10,6 @@ const basePath = `/${(process.env.GITHUB_REPOSITORY ?? "DIKIY306/hochu-tak-kazan
 
 const workerUrl = new URL(`../dist/server/index.js?pages=${Date.now()}`, import.meta.url);
 const { default: worker } = await import(workerUrl.href);
-const response = await worker.fetch(
-  new Request("https://pages.local/"),
-  {
-    ASSETS: {
-      fetch: async () => new Response("Not found", { status: 404 }),
-    },
-  },
-  {
-    waitUntil() {},
-    passThroughOnException() {},
-  },
-);
-
-if (!response.ok) {
-  throw new Error(`Static render failed with status ${response.status}`);
-}
 
 await rm(pagesDir, { recursive: true, force: true });
 await mkdir(pagesDir, { recursive: true });
@@ -40,7 +24,9 @@ const withBasePath = (source) =>
     .replaceAll("'/social-", `'${basePath}/social-`)
     .replaceAll("url(/fonts/", `url(${basePath}/fonts/`)
     .replaceAll('url("/fonts/', `url("${basePath}/fonts/`)
-    .replaceAll('href="/favicon.svg"', `href="${basePath}/favicon.svg"`);
+    .replaceAll('href="/favicon.svg"', `href="${basePath}/favicon.svg"`)
+    .replaceAll('href="/privacy/"', `href="${basePath}/privacy/"`)
+    .replaceAll('href="/"', `href="${basePath}/"`);
 
 const staticBehavior = `<script>
 (() => {
@@ -78,12 +64,38 @@ const staticBehavior = `<script>
 })();
 </script>`;
 
-const html = (await response.text())
-  .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, "")
-  .replace(/<link\b[^>]*rel="modulepreload"[^>]*>/gi, "")
-  .replace("</body>", `${staticBehavior}</body>`);
-await writeFile(path.join(pagesDir, "index.html"), html);
-await writeFile(path.join(pagesDir, "404.html"), html);
+async function renderPage(pathname, outputPath, behavior = "") {
+  const response = await worker.fetch(
+    new Request(`https://pages.local${pathname}`),
+    {
+      ASSETS: {
+        fetch: async () => new Response("Not found", { status: 404 }),
+      },
+    },
+    {
+      waitUntil() {},
+      passThroughOnException() {},
+    },
+  );
+
+  if (!response.ok) {
+    throw new Error(`Static render failed for ${pathname} with status ${response.status}`);
+  }
+
+  const html = (await response.text())
+    .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, "")
+    .replace(/<link\b[^>]*rel="modulepreload"[^>]*>/gi, "")
+    .replace("</body>", `${behavior}</body>`);
+
+  const target = path.join(pagesDir, outputPath);
+  await mkdir(path.dirname(target), { recursive: true });
+  await writeFile(target, html);
+  return html;
+}
+
+const homeHtml = await renderPage("/", "index.html", staticBehavior);
+await renderPage("/privacy", "privacy/index.html");
+await writeFile(path.join(pagesDir, "404.html"), homeHtml);
 await writeFile(path.join(pagesDir, ".nojekyll"), "");
 
 async function rewriteAssets(directory) {

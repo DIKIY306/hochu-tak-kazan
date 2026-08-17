@@ -901,6 +901,40 @@ h3,
   width: 100%;
 }
 
+.booking-form .form-consent {
+  align-items: start;
+  display: grid;
+  gap: 10px;
+  grid-column: 1 / -1;
+  grid-template-columns: 18px minmax(0, 1fr);
+}
+
+.booking-form .form-consent input {
+  accent-color: var(--oxblood);
+  appearance: auto;
+  height: 18px;
+  margin: 2px 0 0;
+  min-height: 18px;
+  padding: 0;
+  width: 18px;
+}
+
+.booking-form .form-consent > span {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 18px;
+  text-transform: none;
+}
+
+.form-consent a,
+.legal-document a {
+  color: var(--oxblood);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
 .faq-section {
   border-bottom: 1px solid var(--line);
 }
@@ -955,11 +989,12 @@ h3,
   background: var(--charcoal);
   color: #ffffff;
   display: grid;
-  gap: 48px;
-  grid-template-columns: 1.4fr 0.7fr 1fr;
+  gap: 56px 40px;
+  grid-template-columns: 1.25fr 0.65fr 0.75fr 1.15fr;
   padding: 72px max(var(--gutter), calc((100vw - var(--max-width)) / 2)) 32px;
 }
 
+.footer-intro,
 .footer-brand {
   align-content: start;
   display: grid;
@@ -975,27 +1010,61 @@ h3,
   color: rgba(255, 255, 255, 0.54);
 }
 
-.footer > div {
+.footer-intro,
+.footer-links,
+.footer-company {
   align-content: start;
   display: grid;
   gap: 12px;
 }
 
-.footer > div p,
-.footer > div a,
-.legal-list span {
+.footer-label {
+  color: rgba(255, 255, 255, 0.46);
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 14px;
+  margin-top: 16px;
+  text-transform: uppercase;
+}
+
+.footer-intro .footer-label {
+  margin-top: 28px;
+}
+
+.footer-links .footer-label,
+.footer-company .footer-label {
+  margin-top: 0;
+}
+
+.footer-links a,
+.footer-company span,
+.footer-company > a,
+.footer-company strong,
+.footer-hours {
   color: rgba(255, 255, 255, 0.72);
   font-size: 14px;
   line-height: 21px;
 }
 
-.footer > div a:hover {
+.footer a:hover {
   color: #ffffff;
 }
 
-.legal-list span {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
-  padding-bottom: 10px;
+.footer-phone {
+  font-family: "Srbija Sans", Arial, Helvetica, sans-serif;
+  font-size: 26px;
+  font-weight: 900;
+  line-height: 30px;
+}
+
+.footer-company strong {
+  color: #ffffff;
+}
+
+.footer-policy {
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  margin-top: 8px;
+  padding-top: 14px;
 }
 
 .copyright {
@@ -1005,6 +1074,128 @@ h3,
   grid-column: 1 / -1;
   padding-top: 24px;
   text-transform: uppercase;
+}
+
+.legal-page {
+  background: var(--canvas);
+  min-height: 100vh;
+}
+
+.legal-topbar {
+  align-items: center;
+  background: rgba(243, 243, 240, 0.96);
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  min-height: 72px;
+  padding: 10px max(var(--gutter), calc((100vw - var(--max-width)) / 2));
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.legal-back {
+  font-family: "Srbija Sans", Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.legal-document {
+  display: grid;
+  gap: 0 72px;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  margin: 0 auto;
+  max-width: calc(var(--max-width) + (var(--gutter) * 2));
+  padding: 72px var(--gutter) 112px;
+}
+
+.legal-hero {
+  border-bottom: 1px solid var(--ink);
+  grid-column: 1 / -1;
+  margin-bottom: 48px;
+  padding-bottom: 40px;
+}
+
+.legal-hero h1 {
+  font-size: 56px;
+  line-height: 58px;
+  margin-top: 20px;
+  max-width: 900px;
+}
+
+.legal-hero > p:last-child {
+  color: var(--muted);
+  font-size: 14px;
+  margin-top: 20px;
+}
+
+.operator-card {
+  align-self: start;
+  background: var(--charcoal);
+  color: #ffffff;
+  display: grid;
+  gap: 10px;
+  grid-column: 2;
+  grid-row: 2;
+  padding: 28px;
+  position: sticky;
+  top: 104px;
+}
+
+.operator-card .footer-label {
+  margin: 0 0 8px;
+}
+
+.operator-card span,
+.operator-card a {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.operator-card a {
+  color: #ffffff;
+}
+
+.legal-document > section {
+  border-bottom: 1px solid var(--line);
+  grid-column: 1;
+  padding: 0 0 52px;
+}
+
+.legal-document > section + section {
+  padding-top: 52px;
+}
+
+.legal-document section h2 {
+  font-size: 32px;
+  line-height: 36px;
+  margin-bottom: 24px;
+}
+
+.legal-document section h3 {
+  font-size: 19px;
+  line-height: 24px;
+  margin: 30px 0 12px;
+}
+
+.legal-document section p,
+.legal-document section li {
+  color: #44443f;
+  font-size: 16px;
+  line-height: 27px;
+}
+
+.legal-document section p + p {
+  margin-top: 16px;
+}
+
+.legal-document section ul {
+  display: grid;
+  gap: 10px;
+  margin: 16px 0 0;
+  padding-left: 20px;
 }
 
 .mobile-sticky-cta {
@@ -1316,8 +1507,23 @@ h3,
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .legal-list {
-    grid-column: 1 / -1;
+  .legal-document {
+    gap: 40px;
+    grid-template-columns: 1fr;
+    padding-bottom: 80px;
+    padding-top: 56px;
+  }
+
+  .legal-hero,
+  .legal-document > section,
+  .operator-card {
+    grid-column: 1;
+  }
+
+  .operator-card {
+    grid-row: auto;
+    margin-bottom: 48px;
+    position: static;
   }
 }
 
@@ -1607,9 +1813,63 @@ h3,
     font-size: 38px;
   }
 
-  .legal-list,
   .copyright {
     grid-column: 1;
+  }
+
+  .legal-topbar {
+    min-height: 64px;
+  }
+
+  .legal-topbar .brand span {
+    display: none;
+  }
+
+  .legal-back {
+    font-size: 11px;
+  }
+
+  .legal-document {
+    gap: 0;
+    padding: 40px var(--gutter) 72px;
+  }
+
+  .legal-hero {
+    margin-bottom: 32px;
+    padding-bottom: 28px;
+  }
+
+  .legal-hero h1 {
+    font-size: 36px;
+    line-height: 38px;
+  }
+
+  .operator-card {
+    margin-bottom: 40px;
+    padding: 24px;
+  }
+
+  .legal-document > section {
+    padding-bottom: 40px;
+  }
+
+  .legal-document > section + section {
+    padding-top: 40px;
+  }
+
+  .legal-document section h2 {
+    font-size: 27px;
+    line-height: 31px;
+  }
+
+  .legal-document section h3 {
+    font-size: 18px;
+  }
+
+  .legal-document section p,
+  .legal-document section li {
+    font-size: 15px;
+    line-height: 25px;
   }
 
   .mobile-sticky-cta {
