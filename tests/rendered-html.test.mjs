@@ -51,6 +51,10 @@ test("server-renders the Hochu Tak quality rescue design", async () => {
   assert.match(html, /\+7 986 925-93-96/);
   assert.match(html, /href="tel:\+79869259396"/);
   assert.match(html, /hero-smooth\.webp/);
+  assert.match(html, /hero-fade\.webp/);
+  assert.match(html, /hero-tiara\.webp/);
+  assert.match(html, /hero-mens-cut\.webp/);
+  assert.match(html, /hero-platinum\.webp/);
   assert.match(html, /service-color\.webp/);
   assert.match(html, /service-perm\.webp/);
   assert.match(html, /ИП Блинов Тимур Хабибуллаевич/);

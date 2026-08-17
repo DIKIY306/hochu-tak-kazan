@@ -65,8 +65,8 @@ const addresses = [
 ];
 
 const workCategories = [
-  { id: "works-women", title: "Женские стрижки", text: "Форма и длина под особенности волос.", src: "/media/hero-before-after.webp", alt: "Женская работа с формой и цветом волос", split: true },
-  { id: "works-men", title: "Мужские стрижки", text: "Аккуратная форма, мойка и укладка.", src: "/media/work-kids.webp", alt: "Мужская текстурная стрижка" },
+  { id: "works-women", title: "Женские стрижки", text: "Форма и длина под особенности волос.", src: "/media/hero-platinum.webp", alt: "Женская стрижка с холодным блондом и плетением" },
+  { id: "works-men", title: "Мужские стрижки", text: "Аккуратная форма, мойка и укладка.", src: "/media/hero-mens-cut.webp", alt: "Мужская стрижка с плавным переходом" },
   { id: "works-kids", title: "Детские стрижки", text: "Для детей от трех лет.", src: "/media/work-kids.webp", alt: "Детская текстурная стрижка" },
   { id: "works-color", title: "Окрашивание", text: "Тон, блонд и сложные техники.", src: "/media/service-color.webp", alt: "Фиолетовое окрашивание волос" },
   { id: "works-care", title: "Уходовые процедуры", text: "Блеск, плотность и восстановление.", src: "/media/work-blonde-crop.webp", alt: "Гладкие ухоженные светлые волосы" },
@@ -79,8 +79,8 @@ const heroWorks = [
   { src: "/media/hero-smooth.webp", alt: "Гладкие окрашенные волосы", split: true },
   { src: "/media/hero-updo.webp", alt: "Вечерняя собранная прическа" },
   { src: "/media/hero-kids-design.webp", alt: "Детская стрижка с выбритым рисунком" },
-  { src: "/media/hero-mens-cut.webp", alt: "Мужская стрижка" },
-  { src: "/media/hero-platinum.webp", alt: "Холодный блонд с плетением" },
+  { src: "/media/hero-fade.webp", alt: "Короткая стрижка с плавным фейдом" },
+  { src: "/media/hero-tiara.webp", alt: "Праздничная собранная прическа с украшением" },
   { src: "/media/hero-curly.webp", alt: "Мужская стрижка с кудрявой текстурой" },
 ];
 
