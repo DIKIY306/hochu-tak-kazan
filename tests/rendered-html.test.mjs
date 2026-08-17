@@ -49,6 +49,8 @@ test("server-renders the Hochu Tak quality rescue design", async () => {
   assert.match(html, /id="works-hairstyles"/);
   assert.match(html, /Подберите ближайший салон к вам/);
   assert.match(html, /\+7 986 925-93-96/);
+  assert.match(html, /href="tel:\+79869259396"/);
+  assert.match(html, /hero-before-after\.webp/);
   assert.match(html, /ИП Блинов Тимур Хабибуллаевич/);
   assert.match(html, /ИНН[\s\S]{0,80}161405161457/);
   assert.match(html, /href="\/privacy\/"/);

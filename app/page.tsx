@@ -65,23 +65,23 @@ const addresses = [
 ];
 
 const workCategories = [
-  { id: "works-women", title: "Женские стрижки", text: "Форма и длина под особенности волос.", src: "/media/hero-before-after.jpg", alt: "Женская работа с формой и цветом волос" },
-  { id: "works-men", title: "Мужские стрижки", text: "Аккуратная форма, мойка и укладка.", src: "/media/work-kids.jpg", alt: "Мужская текстурная стрижка" },
-  { id: "works-kids", title: "Детские стрижки", text: "Для детей от трех лет.", src: "/media/work-kids.jpg", alt: "Детская текстурная стрижка" },
-  { id: "works-color", title: "Окрашивание", text: "Тон, блонд и сложные техники.", src: "/media/color-crop.jpg", alt: "Сложное окрашивание волос" },
-  { id: "works-care", title: "Уходовые процедуры", text: "Блеск, плотность и восстановление.", src: "/media/work-blonde-crop.jpg", alt: "Гладкие ухоженные светлые волосы" },
-  { id: "works-curl", title: "Химические завивки", text: "Текстура после консультации мастера.", src: "/media/work-kids.jpg", alt: "Выраженная текстура и завиток волос" },
-  { id: "works-styling", title: "Укладки", text: "Образ на день или событие.", src: "/media/work-braid-crop.jpg", alt: "Укладка с плетением" },
-  { id: "works-hairstyles", title: "Прически", text: "Собранные и праздничные образы.", src: "/media/work-evening.jpg", alt: "Собранная вечерняя прическа" },
+  { id: "works-women", title: "Женские стрижки", text: "Форма и длина под особенности волос.", src: "/media/hero-before-after.webp", alt: "Женская работа с формой и цветом волос", split: true },
+  { id: "works-men", title: "Мужские стрижки", text: "Аккуратная форма, мойка и укладка.", src: "/media/work-kids.webp", alt: "Мужская текстурная стрижка" },
+  { id: "works-kids", title: "Детские стрижки", text: "Для детей от трех лет.", src: "/media/work-kids.webp", alt: "Детская текстурная стрижка" },
+  { id: "works-color", title: "Окрашивание", text: "Тон, блонд и сложные техники.", src: "/media/color-crop.webp", alt: "Сложное окрашивание волос" },
+  { id: "works-care", title: "Уходовые процедуры", text: "Блеск, плотность и восстановление.", src: "/media/work-blonde-crop.webp", alt: "Гладкие ухоженные светлые волосы" },
+  { id: "works-curl", title: "Химические завивки", text: "Текстура после консультации мастера.", src: "/media/work-kids.webp", alt: "Выраженная текстура и завиток волос" },
+  { id: "works-styling", title: "Укладки", text: "Образ на день или событие.", src: "/media/work-braid-crop.webp", alt: "Укладка с плетением" },
+  { id: "works-hairstyles", title: "Прически", text: "Собранные и праздничные образы.", src: "/media/work-evening.webp", alt: "Собранная вечерняя прическа" },
 ];
 
 const heroWorks = [
-  ["/media/hero-before-after.jpg", "Окрашивание и плетение"],
-  ["/media/work-kids.jpg", "Текстурная стрижка"],
-  ["/media/work-evening.jpg", "Вечерняя прическа"],
-  ["/media/work-blonde.jpg", "Мягкий блонд"],
-  ["/media/style-tiara.jpg", "Праздничный образ"],
-  ["/media/work-braid.jpg", "Плетение"],
+  { src: "/media/hero-before-after.webp", alt: "Окрашивание и плетение", split: true },
+  { src: "/media/work-kids.webp", alt: "Текстурная стрижка" },
+  { src: "/media/work-evening.webp", alt: "Вечерняя прическа" },
+  { src: "/media/work-blonde.webp", alt: "Мягкий блонд", split: true },
+  { src: "/media/style-tiara.webp", alt: "Праздничный образ" },
+  { src: "/media/work-braid.webp", alt: "Плетение", split: true },
 ];
 
 const socialLinks = [
@@ -187,8 +187,11 @@ export default function Home() {
           <a href="#services">Услуги</a>
           <a href="#works">Работы</a>
           <a href="#salons">Салоны</a>
-          <a href="#faq">FAQ</a>
         </nav>
+
+        <a className="header-phone" href={company.phoneHref} aria-label={`Позвонить: ${company.phone}`}>
+          {company.phone}
+        </a>
 
         <nav className="header-socials" aria-label="Социальные сети">
           {socialLinks.map((social) => (
@@ -215,7 +218,7 @@ export default function Home() {
             <a href="#services" onClick={(event) => event.currentTarget.closest("details")?.removeAttribute("open")}>Услуги</a>
             <a href="#works" onClick={(event) => event.currentTarget.closest("details")?.removeAttribute("open")}>Работы</a>
             <a href="#salons" onClick={(event) => event.currentTarget.closest("details")?.removeAttribute("open")}>Салоны</a>
-            <a href="#faq" onClick={(event) => event.currentTarget.closest("details")?.removeAttribute("open")}>FAQ</a>
+            <a className="mobile-phone" href={company.phoneHref}>Позвонить: {company.phone}</a>
             <span className="mobile-socials">
               {socialLinks.map((social) => (
                 <a href={social.href} target="_blank" rel="noreferrer" key={social.label}>
@@ -260,13 +263,13 @@ export default function Home() {
         </div>
 
         <div className="hero-visual hero-collage reference-frame" aria-label="Коллаж работ салонов Хочу Так">
-          {heroWorks.map(([src, alt], index) => (
-            <figure key={src}>
+          {heroWorks.map(({ src, alt, split }, index) => (
+            <figure className={split ? "split-image" : undefined} key={src}>
               <img
                 src={src}
                 alt={alt}
-                width="1280"
-                height="1280"
+                width="960"
+                height="960"
                 decoding="async"
                 fetchPriority={index === 0 ? "high" : undefined}
               />
@@ -317,6 +320,16 @@ export default function Home() {
               style={{ "--reveal-delay": `${Math.min(index, 2) * 90}ms` } as React.CSSProperties}
               key={work.id}
             >
+              <figure className={`work-category-image${work.split ? " split-image" : ""}`}>
+                <img
+                  src={work.src}
+                  alt={work.alt}
+                  width="960"
+                  height="960"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </figure>
               <header>
                 <span>{String(index + 1).padStart(2, "0")}</span>
                 <div>
@@ -325,9 +338,6 @@ export default function Home() {
                 </div>
                 <a href="#booking">Записаться <span aria-hidden="true">→</span></a>
               </header>
-              <figure className="work-category-image">
-                <img src={work.src} alt={work.alt} loading="lazy" decoding="async" />
-              </figure>
             </article>
           ))}
         </div>
