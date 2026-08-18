@@ -333,7 +333,7 @@ export default function Home() {
                   <h3>{work.title}</h3>
                   <p>{work.text}</p>
                 </div>
-                <span className="work-gallery-link">Смотреть 10 работ <span aria-hidden="true">→</span></span>
+                <span className="work-gallery-link">Смотреть весь альбом <span aria-hidden="true">→</span></span>
               </header>
             </a>
           ))}

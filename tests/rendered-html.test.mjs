@@ -53,7 +53,7 @@ test("server-renders the Hochu Tak quality rescue design", async () => {
   assert.match(html, /id="works-hairstyles"/);
   assert.match(html, /href="\.\/works\/women\/"/);
   assert.match(html, /href="\.\/works\/hairstyles\/"/);
-  assert.match(html, /Смотреть 10 работ/);
+  assert.match(html, /Смотреть весь альбом/);
   assert.match(html, /Подберите ближайший салон к вам/);
   assert.match(html, /\+7 986 925-93-96/);
   assert.match(html, /href="tel:\+79869259396"/);
