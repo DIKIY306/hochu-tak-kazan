@@ -7,6 +7,7 @@ const pagesDir = path.join(root, "dist", "pages");
 const basePath = `/${(process.env.GITHUB_REPOSITORY ?? "DIKIY306/hochu-tak-kazan")
   .split("/")
   .at(-1)}`;
+const gallerySlugs = ["women", "men", "kids", "color", "care", "curl", "styling", "hairstyles"];
 
 const workerUrl = new URL(`../dist/server/index.js?pages=${Date.now()}`, import.meta.url);
 const { default: worker } = await import(workerUrl.href);
@@ -95,6 +96,9 @@ async function renderPage(pathname, outputPath, behavior = "") {
 
 const homeHtml = await renderPage("/", "index.html", staticBehavior);
 await renderPage("/privacy", "privacy/index.html");
+for (const slug of gallerySlugs) {
+  await renderPage(`/works/${slug}`, `works/${slug}/index.html`);
+}
 await writeFile(path.join(pagesDir, "404.html"), homeHtml);
 await writeFile(path.join(pagesDir, ".nojekyll"), "");
 

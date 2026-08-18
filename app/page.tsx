@@ -2,55 +2,56 @@
 
 import { useEffect, useState } from "react";
 import { businessMailLinks, company } from "./company";
+import { socialLinks } from "./site-links";
 
 const services = [
   {
     title: "Женская стрижка",
     text: "Консультация, форма и легкая укладка после услуги.",
     meta: "40-60 мин",
-    target: "works-women",
+    slug: "women",
   },
   {
     title: "Мужская стрижка",
     text: "Мойка головы бесплатно, аккуратная форма и укладка.",
     meta: "35-50 мин",
-    target: "works-men",
+    slug: "men",
   },
   {
     title: "Детская стрижка",
     text: "Спокойно, быстро и без лишнего ожидания.",
     meta: "от 3 лет",
-    target: "works-kids",
+    slug: "kids",
   },
   {
     title: "Окрашивание",
     text: "Тон, блонд, сложные техники и консультация по уходу.",
     meta: "цена заранее",
-    target: "works-color",
+    slug: "color",
   },
   {
     title: "Уходы",
     text: "Блеск, плотность, восстановление и мягкость волос.",
     meta: "под задачу",
-    target: "works-care",
+    slug: "care",
   },
   {
     title: "Завивка",
     text: "Долговременная текстура и форма после диагностики.",
     meta: "по консультации",
-    target: "works-curl",
+    slug: "curl",
   },
   {
     title: "Укладки",
     text: "Образ на день, вечер, свидание, выпускной или съемку.",
     meta: "в день записи",
-    target: "works-styling",
+    slug: "styling",
   },
   {
     title: "Прически",
     text: "Свадьба, праздник, тиара, плетение или собранный образ.",
     meta: "по референсу",
-    target: "works-hairstyles",
+    slug: "hairstyles",
   },
 ];
 
@@ -65,14 +66,14 @@ const addresses = [
 ];
 
 const workCategories = [
-  { id: "works-women", title: "Женские стрижки", text: "Форма и длина под особенности волос.", src: "/media/hero-platinum.webp", alt: "Женская стрижка с холодным блондом и плетением" },
-  { id: "works-men", title: "Мужские стрижки", text: "Аккуратная форма, мойка и укладка.", src: "/media/hero-mens-cut.webp", alt: "Мужская стрижка с плавным переходом" },
-  { id: "works-kids", title: "Детские стрижки", text: "Для детей от трех лет.", src: "/media/work-kids.webp", alt: "Детская текстурная стрижка" },
-  { id: "works-color", title: "Окрашивание", text: "Тон, блонд и сложные техники.", src: "/media/service-color.webp", alt: "Фиолетовое окрашивание волос" },
-  { id: "works-care", title: "Уходовые процедуры", text: "Блеск, плотность и восстановление.", src: "/media/work-blonde-crop.webp", alt: "Гладкие ухоженные светлые волосы" },
-  { id: "works-curl", title: "Химические завивки", text: "Текстура после консультации мастера.", src: "/media/service-perm.webp", alt: "Химическая завивка волос" },
-  { id: "works-styling", title: "Укладки", text: "Образ на день или событие.", src: "/media/work-braid-crop.webp", alt: "Укладка с плетением" },
-  { id: "works-hairstyles", title: "Прически", text: "Собранные и праздничные образы.", src: "/media/work-evening.webp", alt: "Собранная вечерняя прическа" },
+  { id: "works-women", slug: "women", title: "Женские стрижки", text: "Форма и длина под особенности волос.", src: "/media/hero-platinum.webp", alt: "Женская стрижка с холодным блондом и плетением" },
+  { id: "works-men", slug: "men", title: "Мужские стрижки", text: "Аккуратная форма, мойка и укладка.", src: "/media/hero-mens-cut.webp", alt: "Мужская стрижка с плавным переходом" },
+  { id: "works-kids", slug: "kids", title: "Детские стрижки", text: "Для детей от трех лет.", src: "/media/work-kids.webp", alt: "Детская текстурная стрижка" },
+  { id: "works-color", slug: "color", title: "Окрашивание", text: "Тон, блонд и сложные техники.", src: "/media/service-color.webp", alt: "Фиолетовое окрашивание волос" },
+  { id: "works-care", slug: "care", title: "Уходовые процедуры", text: "Блеск, плотность и восстановление.", src: "/media/work-blonde-crop.webp", alt: "Гладкие ухоженные светлые волосы" },
+  { id: "works-curl", slug: "curl", title: "Химические завивки", text: "Текстура после консультации мастера.", src: "/media/service-perm.webp", alt: "Химическая завивка волос" },
+  { id: "works-styling", slug: "styling", title: "Укладки", text: "Образ на день или событие.", src: "/media/work-braid-crop.webp", alt: "Укладка с плетением" },
+  { id: "works-hairstyles", slug: "hairstyles", title: "Прически", text: "Собранные и праздничные образы.", src: "/media/work-evening.webp", alt: "Собранная вечерняя прическа" },
 ];
 
 const heroWorks = [
@@ -82,13 +83,6 @@ const heroWorks = [
   { src: "/media/hero-fade.webp", alt: "Короткая стрижка с плавным фейдом" },
   { src: "/media/hero-tiara.webp", alt: "Праздничная собранная прическа с украшением" },
   { src: "/media/hero-curly.webp", alt: "Мужская стрижка с кудрявой текстурой" },
-];
-
-const socialLinks = [
-  { label: "Telegram", href: "https://t.me/Salon_Hochu_Tak", mark: "/social-telegram.svg" },
-  { label: "ВКонтакте", href: "https://vk.com/hochutak_kzn", mark: "/social-vk.svg" },
-  { label: "Instagram", href: "https://www.instagram.com/hochutak_kzn?igsh=a2FjeG5oNjVrcGl2", mark: "/social-instagram.svg" },
-  { label: "MAX · +7 986 925-93-96", href: "https://web.max.ru/", mark: "/social-max.svg" },
 ];
 
 const faqs = [
@@ -291,7 +285,7 @@ export default function Home() {
 
         <div className="service-list">
           {services.map((service, index) => (
-            <a className="service-row" href={`#${service.target}`} key={service.title}>
+            <a className="service-row" href={`./works/${service.slug}/`} key={service.title}>
               <span className="row-number">{String(index + 1).padStart(2, "0")}</span>
               <h3>{service.title}</h3>
               <p>{service.text}</p>
@@ -314,9 +308,11 @@ export default function Home() {
 
         <div className="work-categories">
           {workCategories.map((work, index) => (
-            <article
+            <a
               className="work-category"
               id={work.id}
+              href={`./works/${work.slug}/`}
+              aria-label={`${work.title}: открыть альбом работ`}
               data-reveal="image"
               style={{ "--reveal-delay": `${Math.min(index, 2) * 90}ms` } as React.CSSProperties}
               key={work.id}
@@ -337,9 +333,9 @@ export default function Home() {
                   <h3>{work.title}</h3>
                   <p>{work.text}</p>
                 </div>
-                <a href="#booking">Записаться <span aria-hidden="true">→</span></a>
+                <span className="work-gallery-link">Смотреть 10 работ <span aria-hidden="true">→</span></span>
               </header>
-            </article>
+            </a>
           ))}
         </div>
       </section>
