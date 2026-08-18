@@ -411,6 +411,11 @@ h3,
   line-height: 26px;
 }
 
+.hero-facts .hero-fact-price dt {
+  font-size: 20px;
+  line-height: 22px;
+}
+
 .hero-facts dd {
   color: var(--muted);
   font-size: 12px;
@@ -1661,6 +1666,11 @@ h3,
   .hero-facts dt {
     font-size: 19px;
     line-height: 21px;
+  }
+
+  .hero-facts .hero-fact-price dt {
+    font-size: 16px;
+    line-height: 18px;
   }
 
   .hero-facts dd {

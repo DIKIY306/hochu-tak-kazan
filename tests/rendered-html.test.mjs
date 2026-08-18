@@ -45,6 +45,10 @@ test("server-renders the Hochu Tak quality rescue design", async () => {
   assert.match(html, /t\.me\/Salon_Hochu_Tak/);
   assert.match(html, /vk\.com\/hochutak_kzn/);
   assert.match(html, /instagram\.com\/hochutak_kzn/);
+  assert.match(html, /web\.max\.ru/);
+  assert.match(html, /MAX · \+7 986 925-93-96/);
+  assert.match(html, /Фиксируем стоимость работы/);
+  assert.match(html, /согласовываем заранее, без доплат/);
   assert.match(html, /id="works-women"/);
   assert.match(html, /id="works-hairstyles"/);
   assert.match(html, /Подберите ближайший салон к вам/);
